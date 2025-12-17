@@ -1,0 +1,57 @@
+[
+  {
+    "lang": "hindi",
+    "name": "कलम",
+    "description": "एक वस्तु जिसका उपयोग काले स्याही में लिखने के लिए किया जाता है"
+  },
+  {
+    "lang": "english",
+    "name": "pen",
+    "description": "object that you use for writing in black ink"
+  },
+  {
+    "lang": "bengali",
+    "name": "কলম",
+    "description": "একটি বস্তু যা কালো কালি দিয়ে লেখার জন্য ব্যবহৃত হয়"
+  },
+  {
+    "lang": "telugu",
+    "name": "పెన్ను",
+    "description": "నల్ల సిరాలో రాయడానికి ఉపయోగించే వస్తువు"
+  },
+  {
+    "lang": "marathi",
+    "name": "पेन",
+    "description": "काळ्या शाईने लिहिण्यासाठी वापरली जाणारी वस्तू"
+  },
+  {
+    "lang": "tamil",
+    "name": "பேனா",
+    "description": "கருப்பு மையுடன் எழுதுவதற்குப் பயன்படுத்தப்படும் பொருள்"
+  },
+  {
+    "lang": "urdu",
+    "name": "قلم",
+    "description": "ایک ایسی چیز جو سیاہی سے لکھنے کے لئے استعمال ہوتی ہے"
+  },
+  {
+    "lang": "gujarati",
+    "name": "પેન",
+    "description": "કાળી શાહીમાં લખવા માટે વપરાતી વસ્તુ"
+  },
+  {
+    "lang": "bhojpuri",
+    "name": "पेन",
+    "description": "काले रंग के स्याही से लिखला जाए वाली चीज"
+  },
+  {
+    "lang": "malyalam",
+    "name": "പേന",
+    "description": "കറുപ്പ് മഷിയിൽ എഴുതാൻ ഉപയോഗിക്കുന്ന ഒരു വസ്തു"
+  },
+  {
+    "lang": "punjabi",
+    "name": "ਪੈਨ",
+    "description": "ਕਾਲੀ ਸਿਆਹੀ ਵਿੱਚ ਲਿਖਣ ਲਈ ਵਰਤਿਆ ਜਾਣ ਵਾਲਾ ਵਸਤੂ"
+  }
+]
