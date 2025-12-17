@@ -7,8 +7,10 @@ import toast from "react-hot-toast";
 import { searchProducts } from "../api/product_api";
 import { useAuth } from "../auth/AuthContext";
 import ProductCard from "../components/ProductCard";
+import { useTranslation } from "react-i18next";
 
 export default function Search() {
+  const { t } = useTranslation();
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
   const { lang } = useAuth();
@@ -48,15 +50,13 @@ export default function Search() {
         category,
         sort,
       });
-      console.log(data);
 
       const items = Array.isArray(data) ? data : [];
-
       setProducts((prev) => (reset ? items : [...prev, ...items]));
       setHasMore(items.length === limit);
     } catch (e) {
       console.error(e);
-      toast.error("Failed to fetch products");
+      toast.error(t("errors.fetchProducts"));
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,6 @@ export default function Search() {
 
   /* ---------------- EFFECTS ---------------- */
 
-  // Search debounce
   useEffect(() => {
     const timer = setTimeout(() => {
       setPage(1);
@@ -75,7 +74,6 @@ export default function Search() {
     return () => clearTimeout(timer);
   }, [query, sort, minPrice, maxPrice, category, lang]);
 
-  // Pagination
   useEffect(() => {
     if (page > 1) fetchProducts();
   }, [page]);
@@ -89,9 +87,11 @@ export default function Search() {
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* HEADER */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-[#2d2d2d]">Search Products</h1>
+          <h1 className="text-3xl font-bold text-[#2d2d2d]">
+            {t("search.title")}
+          </h1>
           <p className="text-sm text-[#6b6b6b] mt-1">
-            Find products by name, price or category
+            {t("search.subtitle")}
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function Search() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search products..."
+            placeholder={t("search.placeholder")}
             className="flex-1 border rounded-2xl px-5 py-3 outline-none focus:ring-2 focus:ring-[#c9945c]"
           />
         </div>
@@ -112,7 +112,7 @@ export default function Search() {
             onChange={(e) => setCategory(e.target.value)}
             className="border rounded-xl px-3 py-2"
           >
-            <option value="">All Categories</option>
+            <option value="">{t("search.allCategories")}</option>
             {categories.map((c) => (
               <option key={c._id} value={c._id}>
                 {c.translations?.[0]?.name}
@@ -125,15 +125,15 @@ export default function Search() {
             onChange={(e) => setSort(e.target.value)}
             className="border rounded-xl px-3 py-2"
           >
-            <option value="relevance">Relevance</option>
-            <option value="price_asc">Price: Low to High</option>
-            <option value="price_desc">Price: High to Low</option>
-            <option value="newest">Newest</option>
+            <option value="relevance">{t("search.relevance")}</option>
+            <option value="price_asc">{t("sort.lowHigh")}</option>
+            <option value="price_desc">{t("sort.highLow")}</option>
+            <option value="newest">{t("sort.newest")}</option>
           </select>
 
           <input
             type="number"
-            placeholder="Min price"
+            placeholder={t("search.minPrice")}
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
             className="border rounded-xl px-3 py-2"
@@ -141,7 +141,7 @@ export default function Search() {
 
           <input
             type="number"
-            placeholder="Max price"
+            placeholder={t("search.maxPrice")}
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
             className="border rounded-xl px-3 py-2"
@@ -156,7 +156,7 @@ export default function Search() {
             }}
             className="border rounded-xl px-4 py-2 hover:bg-gray-50"
           >
-            Reset Filters
+            {t("search.resetFilters")}
           </button>
         </div>
 
@@ -180,7 +180,7 @@ export default function Search() {
                   onClick={() => setPage((p) => p + 1)}
                   className="px-6 py-3 rounded-full bg-[#c9945c] hover:bg-[#b88650] text-white"
                 >
-                  {loading ? "Loading..." : "Load More"}
+                  {loading ? t("common.loading") : t("common.loadMore")}
                 </button>
               </div>
             )}
@@ -193,44 +193,6 @@ export default function Search() {
 
 /* ---------------- COMPONENTS ---------------- */
 
-// const ProductCard = ({ product, navigate }) => {
-//   const { _id, name, price, images } = product;
-//   const image =
-//     images?.[0] ||
-//     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbA2z4dgaMbLcRflpIh8lrDaKxZAE43mFr1WH-bxDrT-T24zTi7P9LAEqiVdn34N3Tr0&usqp=CAU";
-
-//   return (
-//     <div className="border rounded-2xl bg-white p-4 hover:shadow-md transition">
-//       <div
-//         onClick={() => navigate(`/product/${_id}`)}
-//         className="cursor-pointer"
-//       >
-//         <img
-//           src={image}
-//           alt={name}
-//           className="w-full h-48 object-cover rounded-xl"
-//         />
-
-//         <h3 className="mt-3 font-semibold text-[#2d2d2d]">{name}</h3>
-//         <p className="text-sm text-[#6b6b6b] mt-1">₹{price}</p>
-//       </div>
-
-//       <button
-//         onClick={() =>
-//           addToCart({
-//             productId: _id,
-//             quantity: 1,
-//             navigate,
-//           })
-//         }
-//         className="mt-4 w-full bg-[#c9945c] hover:bg-[#b88650] text-white py-2 rounded-xl"
-//       >
-//         Add to Cart
-//       </button>
-//     </div>
-//   );
-// };
-
 const LoadingGrid = () => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {Array.from({ length: 6 }).map((_, i) => (
@@ -239,9 +201,12 @@ const LoadingGrid = () => (
   </div>
 );
 
-const EmptyState = () => (
-  <div className="text-center py-20 text-gray-500">
-    <p className="text-lg mb-2">No products found</p>
-    <p className="text-sm">Try changing keywords or filters</p>
-  </div>
-);
+const EmptyState = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="text-center py-20 text-gray-500">
+      <p className="text-lg mb-2">{t("search.noResults")}</p>
+      <p className="text-sm">{t("search.tryAgain")}</p>
+    </div>
+  );
+};

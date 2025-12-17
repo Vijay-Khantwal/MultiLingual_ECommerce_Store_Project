@@ -1,0 +1,197 @@
+{
+  "hero": {
+    "title": "Discover Timeless Products",
+    "subtitle": "Curated collections • Trusted sellers • Best prices",
+    "searchPlaceholder": "Search local products...",
+    "search": "Search",
+    "shopNow": "Shop Now"
+  },
+  "features": {
+    "secure": {
+      "title": "Secure Payments",
+      "desc": "100% safe and encrypted transactions"
+    },
+    "verified": {
+      "title": "Verified Sellers",
+      "desc": "Only trusted and approved vendors"
+    },
+    "fast": {
+      "title": "Fast Delivery",
+      "desc": "Quick doorstep delivery nationwide"
+    },
+    "returns": {
+      "title": "Easy Returns",
+      "desc": "Hassle-free returns & refunds"
+    }
+  },
+  "sections": {
+    "browse": "Browse Categories",
+    "featured": "Featured Products",
+    "stayUpdated": "Stay Updated"
+  },
+  "category": {
+    "all": "All"
+  },
+  "footer": {
+    "companyTitle": "Our Company",
+    "companyDesc": "Discover timeless products curated with love and quality.",
+    "shopTitle": "Shop",
+    "shop": {
+      "home": "Home",
+      "marketplace": "Marketplace",
+      "featured": "Featured Products",
+      "categories": "Categories"
+    },
+    "supportTitle": "Support",
+    "support": {
+      "contact": "Contact Us",
+      "faq": "FAQ",
+      "returns": "Returns",
+      "shipping": "Shipping Info"
+    },
+    "newsletterTitle": "Newsletter",
+    "newsletterDesc": "Get offers, new arrivals & deals directly in your inbox.",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved."
+  },
+  "addProduct": {
+    "title": "Add New Product",
+    "subtitle": "List your product on the marketplace",
+    "basicInfo": "Basic Information",
+    "productName": "Product Name *",
+    "description": "Description",
+    "originalLanguage": "Original Language",
+    "category": "Category *",
+    "pricingInventory": "Pricing & Inventory",
+    "price": "Price (₹) *",
+    "stock": "Stock *",
+    "images": "Product Images",
+    "imagePlaceholder": "https://example.com/image.jpg",
+    "addImage": "+ Add another image",
+    "visibility": "Visibility",
+    "visible": "Product is active and visible",
+    "submit": "Add Product",
+    "saving": "Saving...",
+    "loading": "Adding product...",
+    "success": "Product added successfully",
+    "errors": {
+      "required": "Please fill all required fields",
+      "failed": "Failed to add product"
+    }
+  },
+  "sort": {
+    "default": "Sort by",
+    "lowHigh": "Price: Low to High",
+    "highLow": "Price: High to Low",
+    "newest": "Newest"
+  },
+  "newsletter": {
+    "desc": "Get offers, new arrivals & deals directly in your inbox",
+    "placeholder": "Enter your email",
+    "subscribe": "Subscribe"
+  },
+  "errors": {
+    "fetchProducts": "Failed to fetch products",
+    "fetchOrders": "Failed to load orders"
+  },
+  "product": {
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "category": "Category",
+    "seller": "Seller",
+    "verifiedSeller": "Verified Seller"
+  },
+  "cart": {
+    "add": "Add to Cart",
+    "added": "Added to Cart",
+    "buyNow": "Buy Now",
+    "title": "Shopping Cart",
+    "summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Checkout",
+    "placingOrder": "Placing order...",
+    "loading": "Loading your cart...",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "remove": "Remove",
+    "itemRemoved": "Item removed",
+    "orderPlaced": "Order placed successfully",
+    "deletedProduct": "Deleted Product",
+    "errors": {
+      "updateQty": "Failed to update quantity",
+      "removeItem": "Failed to remove item",
+      "checkout": "Checkout failed"
+    }
+  },
+  "navbar": {
+    "shop": "Shop",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "logout": "Logout",
+    "profile": "Profile",
+    "orders": "Orders",
+    "dashboard": "Dashboard"
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "write": "Write a Review",
+    "submit": "Submit Review",
+    "placeholder": "Share your experience...",
+    "reviews": "reviews"
+  },
+  "common": {
+    "loading": "Loading...",
+    "loadMore": "Load More",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel"
+  },
+
+  "seller": {
+    "dashboard": "Seller Dashboard",
+    "welcome": "Welcome back, {{name}}",
+    "addProduct": "Add Product",
+    "totalProducts": "Total Products",
+    "totalOrders": "Total Orders",
+    "revenue": "Revenue",
+    "yourProducts": "Your Products",
+    "orders": "Orders",
+    "noProducts": "No products added yet",
+    "addFirstProduct": "Add your first product",
+    "noOrders": "No orders yet",
+    "confirmDelete": "Delete this product permanently?",
+    "stock": "Stock"
+  },
+  "order": {
+    "order": "Order",
+    "placed": "Placed",
+    "shipped": "Shipped",
+    "cancelled": "Cancelled",
+    "delivered": "Delivered",
+    "total": "Total"
+  },
+  "search": {
+    "title": "Search Products",
+    "subtitle": "Find products by name, price or category",
+    "placeholder": "Search products...",
+    "allCategories": "All Categories",
+    "relevance": "Relevance",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "resetFilters": "Reset Filters",
+    "noResults": "No products found",
+    "tryAgain": "Try changing keywords or filters"
+  },
+  "orders": {
+    "myOrders": "My Orders",
+    "emptyTitle": "No orders yet",
+    "emptySubtitle": "Start shopping and your orders will appear here.",
+    "noItems": "No items found",
+    "qty": "Qty",
+    "deletedProduct": "Deleted Product"
+  }
+}

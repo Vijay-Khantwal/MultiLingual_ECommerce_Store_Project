@@ -1,17 +1,36 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "../auth/AuthContext";
 
-export default function CategoryBar({ onSelect }) {
+export default function CategoryBar({ onSelect , lang}) {
+  // const {lang} = useAuth();
+  const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [active, setActive] = useState(null);
 
   useEffect(() => {
-    api.get("/categories").then(res => setCategories(res.data));
-  }, []);
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get("/categories", { params: { lang } });
+        setCategories(res.data || []);
+      } catch (err) {
+        console.error("Failed to fetch categories", err);
+      }
+    };
+    fetchCategories();
+  }, [lang]);
 
-  const select = id => {
+  const select = (id) => {
     setActive(id);
     onSelect(id);
+  };
+
+  const getCategoryName = (category) => {
+    // Use current language, fallback to first translation or default name
+    return (
+      category.name
+    );
   };
 
   return (
@@ -25,10 +44,10 @@ export default function CategoryBar({ onSelect }) {
               : "bg-[#e8dfd7] text-[#3d3d3d] border-[#c9b5a0] hover:bg-[#c9945c] hover:text-white"
           }`}
         >
-          All
+          {t("category.all")}
         </button>
 
-        {categories.map(c => (
+        {categories.map((c) => (
           <button
             key={c._id}
             onClick={() => select(c._id)}
@@ -38,7 +57,7 @@ export default function CategoryBar({ onSelect }) {
                 : "bg-[#e8dfd7] text-[#3d3d3d] border-[#c9b5a0] hover:bg-[#c9945c] hover:text-white"
             }`}
           >
-            {c.translations[0]?.name}
+            {getCategoryName(c)}
           </button>
         ))}
       </div>

@@ -1,15 +1,12 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ProductCard({ product }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { cartItems, addToCart } = useCart();
-  const isInCart = cartItems.some(
-  (item) => item.product._id === product._id
-);
-
+  const isInCart = cartItems.some((item) => item.product._id === product._id);
 
   return (
     <div className="bg-white border border-[#c9b5a0] rounded-lg overflow-hidden hover:shadow-lg transition flex flex-col">
@@ -42,22 +39,20 @@ export default function ProductCard({ product }) {
                 : "bg-[#f0d4d4] text-[#8b3a3a]"
             }`}
           >
-            {product.stock > 0 ? "In Stock" : "Out"}
+            {product.stock > 0 ? t("product.inStock") : t("product.outOfStock")}
           </span>
         </div>
 
         <button
           disabled={isInCart}
-          onClick={() => {
-            addToCart({ productId: product._id, quantity: 1, product });
-          }}
+          onClick={() => addToCart({ productId: product._id, quantity: 1, product })}
           className={`mt-auto py-2 rounded-xl text-white w-full font-medium ${
             isInCart
               ? "bg-[#c9b5c0]/20 cursor-not-allowed"
               : "bg-[#c9945c] hover:bg-[#b88650]"
           }`}
         >
-          {isInCart ? "Added to Cart" : "Add to Cart"}
+          {isInCart ? t("cart.added") : t("cart.add")}
         </button>
       </div>
     </div>

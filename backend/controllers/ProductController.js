@@ -52,7 +52,7 @@ export const getAllProducts = async (req, res) => {
       category,
     } = req.query;
 
-    console.log("Fetching products:", { lang, sort, category });
+    // console.log("Fetching products:", { lang, sort, category });
 
     /* ---------------- FILTER ---------------- */
     const filter = { isActive: true };

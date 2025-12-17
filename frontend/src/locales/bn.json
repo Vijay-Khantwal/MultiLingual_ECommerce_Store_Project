@@ -1,0 +1,196 @@
+{
+  "hero": {
+    "title": "কালজয়ী পণ্য আবিষ্কার করুন",
+    "subtitle": "বাছাইকৃত সংগ্রহ • বিশ্বস্ত বিক্রেতা • সেরা দাম",
+    "searchPlaceholder": "স্থানীয় পণ্য অনুসন্ধান করুন...",
+    "search": "অনুসন্ধান",
+    "shopNow": "এখনই কিনুন"
+  },
+  "features": {
+    "secure": {
+      "title": "নিরাপদ পেমেন্ট",
+      "desc": "১০০% নিরাপদ এবং এনক্রিপ্ট করা লেনদেন"
+    },
+    "verified": {
+      "title": "যাচাইকৃত বিক্রেতা",
+      "desc": "শুধুমাত্র বিশ্বস্ত এবং অনুমোদিত বিক্রেতা"
+    },
+    "fast": {
+      "title": "দ্রুত ডেলিভারি",
+      "desc": "দেশজুড়ে দ্রুত হোম ডেলিভারি"
+    },
+    "returns": {
+      "title": "সহজ রিটার্ন",
+      "desc": "ঝামেলামুক্ত রিটার্ন এবং রিফান্ড"
+    }
+  },
+  "sections": {
+    "browse": "বিভাগ ব্রাউজ করুন",
+    "featured": "ফিচারড পণ্য",
+    "stayUpdated": "আপডেট থাকুন"
+  },
+  "category": {
+    "all": "সব"
+  },
+  "footer": {
+    "companyTitle": "আমাদের কোম্পানি",
+    "companyDesc": "ভালবাসা এবং গুণমানের সাথে তৈরি পণ্য আবিষ্কার করুন।",
+    "shopTitle": "শপ",
+    "shop": {
+      "home": "হোম",
+      "marketplace": "মার্কেটপ্লেস",
+      "featured": "ফিচারড",
+      "categories": "বিভাগ"
+    },
+    "supportTitle": "সহায়তা",
+    "support": {
+      "contact": "যোগাযোগ করুন",
+      "faq": "প্রশ্নাবলী",
+      "returns": "রিটার্ন",
+      "shipping": "শিপিং তথ্য"
+    },
+    "newsletterTitle": "নিউজলেটার",
+    "newsletterDesc": "অফার এবং নতুন ডিল সরাসরি আপনার ইনবক্সে পান।",
+    "newsletterPlaceholder": "আপনার ইমেল লিখুন",
+    "subscribe": "সাবস্ক্রাইব",
+    "rights": "সর্বস্বত্ব সংরক্ষিত।"
+  },
+  "addProduct": {
+    "title": "নতুন পণ্য যোগ করুন",
+    "subtitle": "মার্কেটপ্লেসে আপনার পণ্য তালিকাভুক্ত করুন",
+    "basicInfo": "মৌলিক তথ্য",
+    "productName": "পণ্যের নাম *",
+    "description": "বিবরণ",
+    "originalLanguage": "মূল ভাষা",
+    "category": "বিভাগ *",
+    "pricingInventory": "দাম এবং স্টক",
+    "price": "দাম (₹) *",
+    "stock": "স্টক *",
+    "images": "পণ্যের ছবি",
+    "imagePlaceholder": "https://example.com/image.jpg",
+    "addImage": "+ আরেকটি ছবি যোগ করুন",
+    "visibility": "দৃশ্যমানতা",
+    "visible": "পণ্য সক্রিয় এবং দৃশ্যমান",
+    "submit": "পণ্য যোগ করুন",
+    "saving": "সেভ হচ্ছে...",
+    "loading": "পণ্য যোগ করা হচ্ছে...",
+    "success": "পণ্য সফলভাবে যোগ করা হয়েছে",
+    "errors": {
+      "required": "অনুগ্রহ করে সব প্রয়োজনীয় তথ্য পূরণ করুন",
+      "failed": "পণ্য যোগ করতে ব্যর্থ"
+    }
+  },
+  "sort": {
+    "default": "বাছাই করুন",
+    "lowHigh": "দাম: কম থেকে বেশি",
+    "highLow": "দাম: বেশি থেকে কম",
+    "newest": "নতুন"
+  },
+  "newsletter": {
+    "desc": "অফার এবং নতুন ডিল সরাসরি আপনার ইনবক্সে পান",
+    "placeholder": "আপনার ইমেল লিখুন",
+    "subscribe": "সাবস্ক্রাইব"
+  },
+  "errors": {
+    "fetchProducts": "পণ্য লোড করতে ব্যর্থ",
+    "fetchOrders": "অর্ডার লোড করতে ব্যর্থ"
+  },
+  "product": {
+    "inStock": "স্টকে আছে",
+    "outOfStock": "স্টক শেষ",
+    "category": "বিভাগ",
+    "seller": "বিক্রেতা",
+    "verifiedSeller": "যাচাইকৃত বিক্রেতা"
+  },
+  "cart": {
+    "add": "কার্টে যোগ করুন",
+    "added": "কার্টে যোগ করা হয়েছে",
+    "buyNow": "এখনই কিনুন",
+    "title": "শপিং কার্ট",
+    "summary": "অর্ডার সারাংশ",
+    "subtotal": "মোট যোগফল",
+    "shipping": "শিপিং",
+    "free": "ফ্রি",
+    "total": "মোট",
+    "checkout": "চেকআউট",
+    "placingOrder": "অর্ডার করা হচ্ছে...",
+    "loading": "কার্ট লোড হচ্ছে...",
+    "empty": "আপনার কার্ট খালি",
+    "continueShopping": "কেনাকাটা চালিয়ে যান",
+    "remove": "সরান",
+    "itemRemoved": "আইটেম সরানো হয়েছে",
+    "orderPlaced": "অর্ডার সফলভাবে করা হয়েছে",
+    "deletedProduct": "মুছে ফেলা পণ্য",
+    "errors": {
+      "updateQty": "পরিমাণ আপডেট করতে ব্যর্থ",
+      "removeItem": "আইটেম সরাতে ব্যর্থ",
+      "checkout": "চেকআউট ব্যর্থ"
+    }
+  },
+  "navbar": {
+    "shop": "শপ",
+    "login": "লগইন",
+    "signUp": "সাইন আপ",
+    "logout": "লগ আউট",
+    "profile": "প্রোফাইল",
+    "orders": "অর্ডার",
+    "dashboard": "ড্যাশবোর্ড"
+  },
+  "reviews": {
+    "title": "গ্রাহক পর্যালোচনা",
+    "write": "রিভিউ লিখুন",
+    "submit": "জমা দিন",
+    "placeholder": "আপনার অভিজ্ঞতা শেয়ার করুন...",
+    "reviews": "রিভিউ"
+  },
+  "common": {
+    "loading": "লোড হচ্ছে...",
+    "loadMore": "আরও দেখুন",
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন",
+    "cancel": "বাতিল"
+  },
+  "seller": {
+    "dashboard": "বিক্রেতা ড্যাশবোর্ড",
+    "welcome": "স্বাগতম, {{name}}",
+    "addProduct": "পণ্য যোগ করুন",
+    "totalProducts": "মোট পণ্য",
+    "totalOrders": "মোট অর্ডার",
+    "revenue": "আয়",
+    "yourProducts": "আপনার পণ্য",
+    "orders": "অর্ডার",
+    "noProducts": "এখনও কোনও পণ্য যোগ করা হয়নি",
+    "addFirstProduct": "আপনার প্রথম পণ্য যোগ করুন",
+    "noOrders": "কোনও অর্ডার নেই",
+    "confirmDelete": "আপনি কি এই পণ্যটি স্থায়ীভাবে মুছে ফেলতে চান?",
+    "stock": "স্টক"
+  },
+  "order": {
+    "order": "অর্ডার",
+    "placed": "করা হয়েছে",
+    "shipped": "শিপ করা হয়েছে",
+    "cancelled": "বাতিল",
+    "delivered": "ডেলিভারি হয়েছে",
+    "total": "মোট"
+  },
+  "search": {
+    "title": "পণ্য অনুসন্ধান করুন",
+    "subtitle": "নাম, দাম বা বিভাগ দ্বারা পণ্য খুঁজুন",
+    "placeholder": "পণ্য অনুসন্ধান করুন...",
+    "allCategories": "সব বিভাগ",
+    "relevance": "প্রাসঙ্গিকতা",
+    "minPrice": "ন্যূনতম দাম",
+    "maxPrice": "সর্বাধিক দাম",
+    "resetFilters": "ফিল্টার রিসেট",
+    "noResults": "কোনও পণ্য পাওয়া যায়নি",
+    "tryAgain": "কীওয়ার্ড বা ফিল্টার পরিবর্তন করার চেষ্টা করুন"
+  },
+  "orders": {
+    "myOrders": "আমার অর্ডার",
+    "emptyTitle": "এখনও কোনও অর্ডার নেই",
+    "emptySubtitle": "কেনাকাটা শুরু করুন এবং আপনার অর্ডার এখানে দেখা যাবে।",
+    "noItems": "কোনও আইটেম পাওয়া যায়নি",
+    "qty": "পরিমাণ",
+    "deletedProduct": "মুছে ফেলা পণ্য"
+  }
+}

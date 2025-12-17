@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { CartIcon } from "./Icons";
 import LanguageSelect from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
@@ -39,34 +41,31 @@ export default function Navbar() {
           MyStore
         </Link>
 
-
         {/* Right Section */}
         <div className="flex items-center gap-6 text-[#3d3d3d]">
-          {/* Shop always visible */}
-          <LanguageSelect/>
+          <LanguageSelect />
           <Link to="/marketplace" className="hover:text-[#c9945c] transition">
-            Shop
+            {t("navbar.shop")}
           </Link>
 
           {!user ? (
             <>
-              {/* Logged Out */}
               <Link to="/login" className="hover:text-[#c9945c]">
-                Login
+                {t("navbar.login")}
               </Link>
 
               <Link
                 to="/register"
                 className="bg-[#c9945c] hover:bg-[#b88650] text-white px-4 py-2 rounded-full text-sm font-medium transition"
               >
-                Sign Up
+                {t("navbar.signUp")}
               </Link>
             </>
           ) : (
             <>
               {user?.role === "SELLER" && (
                 <Link to="/seller" className="hover:text-[#c9945c]">
-                  Dashboard
+                  {t("navbar.dashboard")}
                 </Link>
               )}
 
@@ -75,7 +74,7 @@ export default function Navbar() {
                 <CartIcon />
               </Link>
 
-              {/* Profile */}
+              {/* Profile Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setOpen(!open)}
@@ -94,23 +93,22 @@ export default function Navbar() {
                       to="/profile"
                       className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
                     >
-                      Profile
+                      {t("navbar.profile")}
                     </Link>
 
                     <Link
                       to="/orders"
                       className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
                     >
-                      Orders
+                      {t("navbar.orders")}
                     </Link>
 
-                    {/* Seller Dashboard */}
                     {user.role === "SELLER" && (
                       <Link
                         to="/seller"
                         className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
                       >
-                        Seller Dashboard
+                        {t("navbar.dashboard")}
                       </Link>
                     )}
 
@@ -118,7 +116,7 @@ export default function Navbar() {
                       onClick={logout}
                       className="w-full text-left px-4 py-2 text-sm text-[#8b3a3a] hover:bg-[#f0d4d4]"
                     >
-                      Logout
+                      {t("navbar.logout")}
                     </button>
                   </div>
                 )}

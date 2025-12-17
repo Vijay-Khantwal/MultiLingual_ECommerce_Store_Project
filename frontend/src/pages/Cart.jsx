@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
+import { useTranslation } from "react-i18next";
+import Footer from "../components/Footer";
 
 export default function Cart() {
+  const { t } = useTranslation();
   const { cartItems, removeFromCart, loadCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -24,41 +27,37 @@ export default function Cart() {
   }, [lang]);
 
   const changeQty = async (productId, qty) => {
-    console.log(productId);
     if (qty < 1) return;
-    // console.log(cartItems);
 
-    const item = cartItems.find(i => i._id === productId);
-    // console.log(item);
+    const item = cartItems.find((i) => i._id === productId);
     if (!item) return;
 
     try {
       await updateCartItem(productId, qty);
-      await loadCart(); // reload to sync
+      await loadCart();
     } catch {
-      toast.error("Failed to update quantity");
+      toast.error(t("cart.errors.updateQty"));
     }
   };
 
   const removeItem = async (productId) => {
     try {
       await removeFromCart(productId);
-      toast.success("Item removed");
+      toast.success(t("cart.itemRemoved"));
     } catch {
-      toast.error("Failed to remove item");
+      toast.error(t("cart.errors.removeItem"));
     }
   };
-  
 
   const checkout = async () => {
     setCheckoutLoading(true);
     try {
       await placeOrder();
-      toast.success("Order placed successfully");
+      toast.success(t("cart.orderPlaced"));
       await loadCart();
       navigate("/orders");
     } catch {
-      toast.error("Checkout failed");
+      toast.error(t("cart.errors.checkout"));
     } finally {
       setCheckoutLoading(false);
     }
@@ -74,7 +73,7 @@ export default function Cart() {
       <>
         <Navbar />
         <div className="max-w-5xl mx-auto px-6 py-20 text-center text-[#6b6b6b]">
-          Loading your cart...
+          {t("cart.loading")}
         </div>
       </>
     );
@@ -86,7 +85,7 @@ export default function Cart() {
 
       <div className="max-w-6xl mx-auto px-6 py-10">
         <h1 className="text-3xl font-bold text-[#2d2d2d] mb-8">
-          Shopping Cart
+          {t("cart.title")}
         </h1>
 
         {cartItems.length === 0 ? (
@@ -107,12 +106,24 @@ export default function Cart() {
 
             {/* SUMMARY */}
             <div className="bg-[#f5f1ed] border border-[#d4cfc7] rounded-2xl p-6 h-fit sticky top-24">
-              <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+              <h2 className="text-lg font-semibold mb-4">
+                {t("cart.summary")}
+              </h2>
 
               <div className="space-y-3 text-sm">
-                <SummaryRow label="Subtotal" value={`₹${total}`} />
-                <SummaryRow label="Shipping" value="Free" />
-                <SummaryRow label="Total" value={`₹${total}`} bold />
+                <SummaryRow
+                  label={t("cart.subtotal")}
+                  value={`₹${total}`}
+                />
+                <SummaryRow
+                  label={t("cart.shipping")}
+                  value={t("cart.free")}
+                />
+                <SummaryRow
+                  label={t("cart.total")}
+                  value={`₹${total}`}
+                  bold
+                />
               </div>
 
               <button
@@ -120,12 +131,15 @@ export default function Cart() {
                 onClick={checkout}
                 className="w-full mt-6 bg-[#c9945c] hover:bg-[#b88650] text-white py-3 rounded-2xl font-medium"
               >
-                {checkoutLoading ? "Placing order..." : "Checkout"}
+                {checkoutLoading
+                  ? t("cart.placingOrder")
+                  : t("cart.checkout")}
               </button>
             </div>
           </div>
         )}
       </div>
+      <Footer/>
     </>
   );
 }
@@ -133,9 +147,9 @@ export default function Cart() {
 /* ---------------- COMPONENTS ---------------- */
 
 const CartItem = ({ item, onQtyChange, onRemove }) => {
+  const { t } = useTranslation();
   const { product, quantity } = item;
   if (!product) return null;
-  // console.log(item._id);
 
   return (
     <div className="bg-white border border-[#d4cfc7] rounded-2xl p-4 flex gap-4">
@@ -149,10 +163,12 @@ const CartItem = ({ item, onQtyChange, onRemove }) => {
 
       <div className="flex-1">
         <h3 className="font-semibold text-[#2d2d2d]">
-          {product.name || "Deleted Product"}
+          {product.name || t("cart.deletedProduct")}
         </h3>
 
-        <p className="text-sm text-[#6b6b6b] mt-1">₹{product.price || 0}</p>
+        <p className="text-sm text-[#6b6b6b] mt-1">
+          ₹{product.price || 0}
+        </p>
 
         <div className="flex items-center gap-3 mt-3">
           <button
@@ -165,7 +181,7 @@ const CartItem = ({ item, onQtyChange, onRemove }) => {
           <span className="font-medium">{quantity}</span>
 
           <button
-            onClick={() => onQtyChange( item._id, quantity + 1)}
+            onClick={() => onQtyChange(item._id, quantity + 1)}
             className="w-8 h-8 border rounded-full"
           >
             +
@@ -182,7 +198,7 @@ const CartItem = ({ item, onQtyChange, onRemove }) => {
           onClick={() => onRemove(item._id)}
           className="text-sm text-[#8b3a3a]"
         >
-          Remove
+          {t("cart.remove")}
         </button>
       </div>
     </div>
@@ -198,14 +214,17 @@ const SummaryRow = ({ label, value, bold }) => (
   </div>
 );
 
-const EmptyCart = ({ onShop }) => (
-  <div className="bg-[#f5f1ed] border border-[#d4cfc7] rounded-2xl p-16 text-center text-[#6b6b6b]">
-    <p className="mb-6">Your cart is empty</p>
-    <button
-      onClick={onShop}
-      className="bg-[#c9945c] hover:bg-[#b88650] text-white px-6 py-3 rounded-full"
-    >
-      Continue Shopping
-    </button>
-  </div>
-);
+const EmptyCart = ({ onShop }) => {
+  const { t } = useTranslation();
+  return (
+    <div className="bg-[#f5f1ed] border border-[#d4cfc7] rounded-2xl p-16 text-center text-[#6b6b6b]">
+      <p className="mb-6">{t("cart.empty")}</p>
+      <button
+        onClick={onShop}
+        className="bg-[#c9945c] hover:bg-[#b88650] text-white px-6 py-3 rounded-full"
+      >
+        {t("cart.continueShopping")}
+      </button>
+    </div>
+  );
+};

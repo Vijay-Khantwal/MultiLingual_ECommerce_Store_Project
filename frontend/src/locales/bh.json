@@ -1,0 +1,196 @@
+{
+  "hero": {
+    "title": "सदाबहार सामान खोजीं",
+    "subtitle": "चुनल गइल संग्रह • भरोसेमंद दुकानदार • सबसे नीमन दाम",
+    "searchPlaceholder": "स्थानीय सामान खोजीं...",
+    "search": "खोजीं",
+    "shopNow": "अभी खरीदीं"
+  },
+  "features": {
+    "secure": {
+      "title": "सुरक्षित भुगतान",
+      "desc": "100% सुरक्षित आ एन्क्रिप्टेड लेन-देन"
+    },
+    "verified": {
+      "title": "सत्यापित विक्रेता",
+      "desc": "खाली भरोसेमंद आ मंजूर कइल गइल दुकानदार"
+    },
+    "fast": {
+      "title": "तेज डिलीवरी",
+      "desc": "पूरा देश में घर तक तेज डिलीवरी"
+    },
+    "returns": {
+      "title": "आसान वापसी",
+      "desc": "बिना परेशानी के वापसी आ रिफंड"
+    }
+  },
+  "sections": {
+    "browse": "श्रेणी देखीं",
+    "featured": "खास सामान",
+    "stayUpdated": "अपडेट रहीं"
+  },
+  "category": {
+    "all": "सब"
+  },
+  "footer": {
+    "companyTitle": "हमनी के कंपनी",
+    "companyDesc": "प्यार आ गुणवत्ता के साथ चुनल गइल सामान खोजीं।",
+    "shopTitle": "दुकान",
+    "shop": {
+      "home": "होम",
+      "marketplace": "बाजार",
+      "featured": "खास सामान",
+      "categories": "श्रेणी"
+    },
+    "supportTitle": "सहयोग",
+    "support": {
+      "contact": "संपर्क करीं",
+      "faq": "सवाल-जवाब",
+      "returns": "वापसी",
+      "shipping": "शिप्पिंग जानकारी"
+    },
+    "newsletterTitle": "समाचार पत्र",
+    "newsletterDesc": "ऑफर आ नया सामान के जानकारी सीधे अपना इनबॉक्स में पाईं।",
+    "newsletterPlaceholder": "अपना ईमेल डालीं",
+    "subscribe": "सब्सक्राइब करीं",
+    "rights": "सभ अधिकार सुरक्षित बा।"
+  },
+  "addProduct": {
+    "title": "नया सामान जोड़ीं",
+    "subtitle": "बाजार में अपना सामान के लिस्ट करीं",
+    "basicInfo": "बुनियादी जानकारी",
+    "productName": "सामान के नाम *",
+    "description": "विवरण",
+    "originalLanguage": "असली भाषा",
+    "category": "श्रेणी *",
+    "pricingInventory": "दाम आ स्टॉक",
+    "price": "दाम (₹) *",
+    "stock": "स्टॉक *",
+    "images": "सामान के फोटो",
+    "imagePlaceholder": "https://example.com/image.jpg",
+    "addImage": "+ एगो अउरी फोटो जोड़ीं",
+    "visibility": "दृश्यता",
+    "visible": "सामान सक्रिय बा आ लउकत बा",
+    "submit": "सामान जोड़ीं",
+    "saving": "सेव हो रहल बा...",
+    "loading": "सामान जोड़ल जा रहल बा...",
+    "success": "सामान सफलतापूर्वक जोड़ल गइल",
+    "errors": {
+      "required": "कृपा करके सब जरूरी जानकारी भरीं",
+      "failed": "सामान जोड़े में फेल"
+    }
+  },
+  "sort": {
+    "default": "छाँटीं",
+    "lowHigh": "दाम: कम से ज्यादा",
+    "highLow": "दाम: ज्यादा से कम",
+    "newest": "नया"
+  },
+  "newsletter": {
+    "desc": "ऑफर आ नया सामान के जानकारी सीधे अपना इनबॉक्स में पाईं",
+    "placeholder": "अपना ईमेल डालीं",
+    "subscribe": "सब्सक्राइब करीं"
+  },
+  "errors": {
+    "fetchProducts": "सामान लोड करे में फेल",
+    "fetchOrders": "ऑर्डर लोड करे में फेल"
+  },
+  "product": {
+    "inStock": "उपलब्ध बा",
+    "outOfStock": "खत्म हो गइल",
+    "category": "श्रेणी",
+    "seller": "बेचे वाला",
+    "verifiedSeller": "सत्यापित विक्रेता"
+  },
+  "cart": {
+    "add": "कार्ट में डालीं",
+    "added": "कार्ट में डालल गइल",
+    "buyNow": "अभी खरीदीं",
+    "title": "शॉपिंग कार्ट",
+    "summary": "ऑर्डर के विवरण",
+    "subtotal": "कुल जोड़",
+    "shipping": "शिप्पिंग",
+    "free": "फ्री",
+    "total": "पूरा जोड़",
+    "checkout": "चेकआउट",
+    "placingOrder": "ऑर्डर हो रहल बा...",
+    "loading": "कार्ट लोड हो रहल बा...",
+    "empty": "रउआ कार्ट खाली बा",
+    "continueShopping": "खरीदारी जारी राखीं",
+    "remove": "हटा दीं",
+    "itemRemoved": "सामान हटावल गइल",
+    "orderPlaced": "ऑर्डर सफलतापूर्वक हो गइल",
+    "deletedProduct": "हटावल गइल सामान",
+    "errors": {
+      "updateQty": "मात्रा अपडेट करे में फेल",
+      "removeItem": "सामान हटावे में फेल",
+      "checkout": "चेकआउट फेल"
+    }
+  },
+  "navbar": {
+    "shop": "दुकान",
+    "login": "लॉगिन",
+    "signUp": "साइन अप",
+    "logout": "लॉगआउट",
+    "profile": "प्रोफाइल",
+    "orders": "ऑर्डर",
+    "dashboard": "डैशबोर्ड"
+  },
+  "reviews": {
+    "title": "ग्राहक के समीक्षा",
+    "write": "समीक्षा लिखीं",
+    "submit": "जमा करीं",
+    "placeholder": "अपना अनुभव बताईं...",
+    "reviews": "समीक्षा"
+  },
+  "common": {
+    "loading": "लोड हो रहल बा...",
+    "loadMore": "अउरी देखीं",
+    "edit": "सुधारीं",
+    "delete": "हटा दीं",
+    "cancel": "रद्द करीं"
+  },
+  "seller": {
+    "dashboard": "विक्रेता डैशबोर्ड",
+    "welcome": "स्वागत बा, {{name}}",
+    "addProduct": "सामान जोड़ीं",
+    "totalProducts": "कुल सामान",
+    "totalOrders": "कुल ऑर्डर",
+    "revenue": "कमाई",
+    "yourProducts": "रउआ सामान",
+    "orders": "ऑर्डर",
+    "noProducts": "अभी ले कौनो सामान नइखे जोड़ल गइल",
+    "addFirstProduct": "अपना पहिला सामान जोड़ीं",
+    "noOrders": "कउनो ऑर्डर नइखे",
+    "confirmDelete": "का रउआ ई सामान हमेशा खातिर हटावे के चाहत बानी?",
+    "stock": "स्टॉक"
+  },
+  "order": {
+    "order": "ऑर्डर",
+    "placed": "ऑर्डर कइल गइल",
+    "shipped": "भेजल गइल",
+    "cancelled": "रद्द कइल गइल",
+    "delivered": "पहुँच गइल",
+    "total": "कुल"
+  },
+  "search": {
+    "title": "सामान खोजीं",
+    "subtitle": "नाम, दाम या श्रेणी से सामान खोजीं",
+    "placeholder": "सामान खोजीं...",
+    "allCategories": "सब श्रेणी",
+    "relevance": "प्रासंगिकता",
+    "minPrice": "कम से कम दाम",
+    "maxPrice": "ज्यादा से ज्यादा दाम",
+    "resetFilters": "फिल्टर हटाईं",
+    "noResults": "कउनो सामान ना मिलल",
+    "tryAgain": "कीवर्ड या फिल्टर बदल के देखीं"
+  },
+  "orders": {
+    "myOrders": "हमार ऑर्डर",
+    "emptyTitle": "अभी ले कउनो ऑर्डर नइखे",
+    "emptySubtitle": "खरीदारी शुरू करीं आ रउआ ऑर्डर हियाँ लउकी।",
+    "noItems": "कउनो सामान ना मिलल",
+    "qty": "मात्रा",
+    "deletedProduct": "हटावल गइल सामान"
+  }
+}

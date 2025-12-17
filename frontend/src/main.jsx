@@ -5,6 +5,8 @@ import { Toaster } from "react-hot-toast";
 import Router from "./routes";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext";
+import "./i18n";
+
 
 createRoot(document.getElementById("root")).render(
   <>

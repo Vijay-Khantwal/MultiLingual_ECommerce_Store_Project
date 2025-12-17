@@ -3,8 +3,10 @@ import Navbar from "../components/Navbar";
 import { getUserOrders } from "../api/order_api";
 import toast from "react-hot-toast";
 import { useAuth } from "../auth/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function UserOrders() {
+  const { t } = useTranslation();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const { lang } = useAuth();
@@ -15,21 +17,21 @@ export default function UserOrders() {
         const res = await getUserOrders({ lang });
         setOrders(res.data || []);
       } catch {
-        toast.error("Failed to load orders");
+        toast.error(t("errors.fetchOrders"));
       } finally {
         setLoading(false);
       }
     };
 
     if (lang) fetchOrders();
-  }, [lang]);
+  }, [lang, t]);
 
   if (loading) {
     return (
       <>
         <Navbar />
         <div className="max-w-5xl mx-auto px-6 py-20 text-center text-gray-500">
-          Loading your orders...
+          {t("common.loading")}
         </div>
       </>
     );
@@ -41,7 +43,7 @@ export default function UserOrders() {
 
       <div className="max-w-5xl mx-auto px-6 py-8">
         <h1 className="text-3xl font-bold mb-8 text-gray-800">
-          My Orders
+          {t("orders.myOrders")}
         </h1>
 
         {orders.length === 0 ? (
@@ -61,6 +63,7 @@ export default function UserOrders() {
 /* ------------------ COMPONENTS ------------------ */
 
 const OrderCard = ({ order }) => {
+  const { t } = useTranslation();
   const items = order.items || [];
 
   return (
@@ -68,26 +71,28 @@ const OrderCard = ({ order }) => {
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <span className="font-semibold text-gray-700">
-          Order #{order._id?.slice(-6)}
+          {t("order.order")} #{order._id?.slice(-6)}
         </span>
 
         <span
           className={`text-xs font-medium px-3 py-1 rounded-full ${
-            order.status === "Delivered"
+            order.status === "DELIVERED"
               ? "bg-green-100 text-green-700"
-              : order.status === "Pending"
+              : order.status === "PLACED"
               ? "bg-yellow-100 text-yellow-700"
               : "bg-gray-100 text-gray-700"
           }`}
         >
-          {order.status}
+          {t(`order.${order.status.toLowerCase()}`)}
         </span>
       </div>
 
       {/* Items */}
       <div className="divide-y divide-gray-200">
         {items.length === 0 ? (
-          <p className="text-sm text-gray-500 py-2">No items found</p>
+          <p className="text-sm text-gray-500 py-2">
+            {t("orders.noItems")}
+          </p>
         ) : (
           items.map((item) => (
             <div
@@ -96,16 +101,19 @@ const OrderCard = ({ order }) => {
             >
               <div className="flex items-center gap-3">
                 <img
-                  src={item.product?.images?.[0] || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbA2z4dgaMbLcRflpIh8lrDaKxZAE43mFr1WH-bxDrT-T24zTi7P9LAEqiVdn34N3Tr0&usqp=CAU"}
+                  src={
+                    item.product?.images?.[0] ||
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbA2z4dgaMbLcRflpIh8lrDaKxZAE43mFr1WH-bxDrT-T24zTi7P9LAEqiVdn34N3Tr0&usqp=CAU"
+                  }
                   alt={item.product?.name}
                   className="w-12 h-12 object-cover rounded-lg border"
                 />
                 <div>
                   <p className="font-medium text-gray-800">
-                    {item.product?.name || "Deleted Product"}
+                    {item.product?.name || t("orders.deletedProduct")}
                   </p>
                   <p className="text-xs text-gray-500">
-                    Qty: {item.quantity}
+                    {t("orders.qty")}: {item.quantity}
                   </p>
                 </div>
               </div>
@@ -121,16 +129,24 @@ const OrderCard = ({ order }) => {
       {/* Total */}
       <div className="mt-4 flex justify-end">
         <span className="text-lg font-semibold text-gray-800">
-          Total: ₹{order.totalAmount}
+          {t("order.total")}: ₹{order.totalAmount}
         </span>
       </div>
     </div>
   );
 };
 
-const EmptyOrders = () => (
-  <div className="bg-gray-50 border border-gray-200 rounded-2xl p-16 text-center text-gray-500">
-    <p className="mb-3 text-lg font-medium">No orders yet</p>
-    <p className="text-sm">Start shopping and your orders will appear here.</p>
-  </div>
-);
+const EmptyOrders = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="bg-gray-50 border border-gray-200 rounded-2xl p-16 text-center text-gray-500">
+      <p className="mb-3 text-lg font-medium">
+        {t("orders.emptyTitle")}
+      </p>
+      <p className="text-sm">
+        {t("orders.emptySubtitle")}
+      </p>
+    </div>
+  );
+};

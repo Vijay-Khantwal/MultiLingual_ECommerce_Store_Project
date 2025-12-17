@@ -7,6 +7,7 @@ import { placeOrder } from "../api/order_api";
 import { getReviews, addReview } from "../api/review_api";
 import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
+import { useTranslation } from "react-i18next";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -17,22 +18,23 @@ export default function ProductDetails() {
   const [imgIndex, setImgIndex] = useState(0);
   const { lang } = useAuth();
   const { cartItems, addToCart } = useCart();
-  // let def = cartItems.some((item) => id === item.product._id);
-  const isInCart = cartItems.some((item) => item.product._id === id);
+  const { t } = useTranslation();
 
+  const isInCart = cartItems.some((item) => item.product._id === id);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!lang) return;
-    getProduct(id, { lang: lang }).then((res) => setProduct(res.data));
+    getProduct(id, { lang }).then((res) => setProduct(res.data));
     getReviews(id).then((res) => setReviews(res.data));
-    console.log("Language in Product Details:", lang);
   }, [id, lang]);
 
   if (!product) return null;
 
   const avgRating = reviews.length
-    ? (reviews.reduce((a, r) => a + r.rating, 0) / reviews.length).toFixed(1)
+    ? (
+        reviews.reduce((a, r) => a + r.rating, 0) / reviews.length
+      ).toFixed(1)
     : "0.0";
 
   const submitReview = async () => {
@@ -88,7 +90,9 @@ export default function ProductDetails() {
                   : "bg-[#f0d4d4] text-[#8b3a3a]"
               }`}
             >
-              {product.stock > 0 ? "In Stock" : "Out of Stock"}
+              {product.stock > 0
+                ? t("product.inStock")
+                : t("product.outOfStock")}
             </span>
           </div>
 
@@ -108,7 +112,7 @@ export default function ProductDetails() {
               ))}
             </div>
             <span className="text-sm text-[#6b6b6b]">
-              {avgRating} ({reviews.length} reviews)
+              {avgRating} ({reviews.length} {t("reviews.reviews")})
             </span>
           </div>
 
@@ -118,15 +122,19 @@ export default function ProductDetails() {
 
           <div className="grid grid-cols-2 gap-4 bg-[#e8dfd7] p-4 rounded-xl">
             <div>
-              <p className="text-sm text-[#6b6b6b]">Category</p>
+              <p className="text-sm text-[#6b6b6b]">
+                {t("product.category")}
+              </p>
               <p className="font-medium text-[#3d3d3d]">
                 {product.categoryId?.name || "—"}
               </p>
             </div>
             <div>
-              <p className="text-sm text-[#6b6b6b]">Seller</p>
+              <p className="text-sm text-[#6b6b6b]">
+                {t("product.seller")}
+              </p>
               <p className="font-medium text-[#3d3d3d]">
-                {product.sellerId?.name || "Verified Seller"}
+                {product.sellerId?.name || t("product.verifiedSeller")}
               </p>
             </div>
           </div>
@@ -135,7 +143,6 @@ export default function ProductDetails() {
             <button
               onClick={() => {
                 addToCart({ productId: id, quantity: 1, product });
-                setIsInCart(true);
               }}
               disabled={isInCart}
               className={`flex-1 border-2 border-[#c9b5a0] text-[#3d3d3d] px-6 py-3 rounded-xl transition font-medium ${
@@ -144,7 +151,9 @@ export default function ProductDetails() {
                   : "hover:bg-[#e8dfd7]"
               }`}
             >
-              {isInCart ? "Added to Cart" : "Add to Cart"}
+              {isInCart
+                ? t("cart.added")
+                : t("cart.add")}
             </button>
 
             <button
@@ -154,7 +163,7 @@ export default function ProductDetails() {
               }}
               className="flex-1 bg-[#c9945c] text-white px-6 py-3 rounded-xl hover:bg-[#b88650] transition font-medium"
             >
-              Buy Now
+              {t("cart.buyNow")}
             </button>
           </div>
         </div>
@@ -163,12 +172,15 @@ export default function ProductDetails() {
       {/* Reviews Section */}
       <div className="max-w-5xl mr-auto mx-auto px-6 pb-16">
         <h2 className="text-2xl font-semibold mb-6 text-[#2d2d2d]">
-          Customer Reviews
+          {t("reviews.title")}
         </h2>
 
         {/* Add Review */}
         <div className="bg-[#e8dfd7] p-6 rounded-2xl mb-8">
-          <h3 className="font-medium mb-4 text-[#3d3d3d]">Write a Review</h3>
+          <h3 className="font-medium mb-4 text-[#3d3d3d]">
+            {t("reviews.write")}
+          </h3>
+
           <div className="flex gap-2 mb-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <button
@@ -184,17 +196,19 @@ export default function ProductDetails() {
               </button>
             ))}
           </div>
+
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="Share your experience..."
+            placeholder={t("reviews.placeholder")}
             className="w-full p-3 rounded-xl border border-[#d4cfc7] bg-[#f5f1ed] focus:outline-none focus:border-[#c9b5a0]"
           />
+
           <button
             onClick={submitReview}
             className="mt-4 bg-[#c9945c] text-white px-6 py-2 rounded-xl hover:bg-[#b88650] transition font-medium"
           >
-            Submit Review
+            {t("reviews.submit")}
           </button>
         </div>
 

@@ -5,8 +5,10 @@ import Navbar from "../components/Navbar";
 import { createProduct } from "../api/product_api";
 import api from "../api/axios";
 import { useAuth } from "../auth/AuthContext";
+import { useTranslation } from "react-i18next";
 
 export default function AddProduct() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [categories, setCategories] = useState([]);
@@ -21,12 +23,13 @@ export default function AddProduct() {
     stock: "",
     categoryId: "",
     images: [""],
-    isActive: true,
   });
 
   useEffect(() => {
-    api.get("/categories").then((res) => setCategories(res.data));
-  }, []);
+    api
+      .get("/categories", { params: { lang } })
+      .then((res) => setCategories(res.data));
+  }, [lang]);
 
   const update = (k, v) => setForm({ ...form, [k]: v });
 
@@ -49,12 +52,12 @@ export default function AddProduct() {
     e.preventDefault();
 
     if (!form.name || !form.price || !form.categoryId) {
-      toast.error("Please fill all required fields");
+      toast.error(t("addProduct.errors.required"));
       return;
     }
 
     setLoading(true);
-    const toastId = toast.loading("Adding product...");
+    const toastId = toast.loading(t("addProduct.loading"));
 
     try {
       await createProduct({
@@ -67,10 +70,10 @@ export default function AddProduct() {
         images: form.images.filter(Boolean),
       });
 
-      toast.success("Product added successfully", { id: toastId });
+      toast.success(t("addProduct.success"), { id: toastId });
       navigate("/seller");
     } catch {
-      toast.error("Failed to add product", { id: toastId });
+      toast.error(t("addProduct.errors.failed"), { id: toastId });
     } finally {
       setLoading(false);
     }
@@ -83,71 +86,76 @@ export default function AddProduct() {
       <div className="max-w-5xl mx-auto px-6 py-10">
         {/* HEADER */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-[#2d2d2d]">Add New Product</h1>
-          <p className="text-[#6b6b6b] mt-1">
-            List your product on the marketplace
-          </p>
+          <h1 className="text-3xl font-bold text-[#2d2d2d]">
+            {t("addProduct.title")}
+          </h1>
+          <p className="text-[#6b6b6b] mt-1">{t("addProduct.subtitle")}</p>
         </div>
 
         <form
           onSubmit={submit}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8"
         >
           {/* LEFT */}
-          <div className="lg:col-span-2 space-y-6">
-            <Card title="Basic Information">
+          {/* LEFT : BASIC INFO */}
+          <div className="lg:col-span-3 space-y-6">
+            <Card title={t("addProduct.basicInfo")}>
               <Input
-                label="Product Name *"
+                label={t("addProduct.productName")}
                 value={form.name}
                 onChange={(e) => update("name", e.target.value)}
               />
 
               <Textarea
-                label="Description"
+                label={t("addProduct.description")}
                 value={form.description}
                 onChange={(e) => update("description", e.target.value)}
               />
 
               <Select
-                label="Original Language"
+                label={t("addProduct.originalLanguage")}
                 value={form.language}
                 onChange={(e) => update("language", e.target.value)}
                 options={[
                   { value: "english", label: "English" },
-                  { value: "hindi", label: "हिंदी (Hindi)" },
-                  { value: "punjabi", label: "ਪੰਜਾਬੀ (Punjabi)" },
-                  { value: "gujarati", label: "ગુજરાતી (Gujarati)" },
-                  { value: "tamil", label: "தமிழ் (Tamil)" },
-                  { value: "telugu", label: "తెలుగు (Telugu)" },
-                  { value: "bhojpuri", label: "भोजपुरी (Bhojpuri)" },
-                  { value: "malyalam", label: "മലയാളം (Malayalam)" },
-                  { value: "marathi", label: "मराठी (Marathi)" },
-                  { value: "urdu", label: "اردو (Urdu)" },
-                  { value: "bengali", label: "বাংলা (Bengali)" },
+                  { value: "hindi", label: "हिंदी" },
+                  { value: "punjabi", label: "ਪੰਜਾਬੀ" },
+                  { value: "gujarati", label: "ગુજરાતી" },
+                  { value: "tamil", label: "தமிழ்" },
+                  { value: "telugu", label: "తెలుగు" },
+                  { value: "bhojpuri", label: "भोजपुरी" },
+                  { value: "malyalam", label: "മലയാളം" },
+                  { value: "marathi", label: "मराठी" },
+                  { value: "urdu", label: "اردو" },
+                  { value: "bengali", label: "বাংলা" },
                 ]}
               />
 
               <Select
-                label="Category *"
+                label={t("addProduct.category")}
                 value={form.categoryId}
                 onChange={(e) => update("categoryId", e.target.value)}
                 options={categories.map((c) => ({
                   value: c._id,
-                  label: c.translations[0]?.name,
+                  label: c.name,
                 }))}
               />
             </Card>
+          </div>
 
-            <Card title="Pricing & Inventory">
+          {/* RIGHT */}
+          {/* RIGHT : META INFO */}
+          <div className="space-y-6 col-span-2">
+            <Card title={t("addProduct.pricingInventory")}>
               <div className="grid grid-cols-2 gap-4">
                 <Input
-                  label="Price (₹) *"
+                  label={t("addProduct.price")}
                   type="number"
                   value={form.price}
                   onChange={(e) => update("price", e.target.value)}
                 />
                 <Input
-                  label="Stock *"
+                  label={t("addProduct.stock")}
                   type="number"
                   value={form.stock}
                   onChange={(e) => update("stock", e.target.value)}
@@ -155,14 +163,14 @@ export default function AddProduct() {
               </div>
             </Card>
 
-            <Card title="Product Images">
+            <Card title={t("addProduct.images")}>
               <div className="space-y-3">
                 {form.images.map((img, i) => (
                   <div key={i} className="flex gap-3">
                     <input
                       value={img}
                       onChange={(e) => updateImage(i, e.target.value)}
-                      placeholder="https://example.com/image.jpg"
+                      placeholder={t("addProduct.imagePlaceholder")}
                       className="flex-1 border rounded-lg px-3 py-2"
                     />
                     {form.images.length > 1 && (
@@ -171,7 +179,7 @@ export default function AddProduct() {
                         onClick={() => removeImage(i)}
                         className="text-sm text-red-600"
                       >
-                        Remove
+                        {t("common.delete")}
                       </button>
                     )}
                   </div>
@@ -183,7 +191,7 @@ export default function AddProduct() {
                 onClick={addImageField}
                 className="mt-3 text-sm text-[#c9945c]"
               >
-                + Add another image
+                {t("addProduct.addImage")}
               </button>
 
               <div className="grid grid-cols-3 gap-3 mt-4">
@@ -196,27 +204,13 @@ export default function AddProduct() {
                 ))}
               </div>
             </Card>
-          </div>
-
-          {/* RIGHT */}
-          <div className="space-y-6">
-            <Card title="Visibility">
-              <label className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  checked={form.isActive}
-                  onChange={(e) => update("isActive", e.target.checked)}
-                />
-                <span className="text-sm">Product is active and visible</span>
-              </label>
-            </Card>
 
             <div className="sticky top-24">
               <button
                 disabled={loading}
                 className="w-full bg-[#c9945c] hover:bg-[#b88650] text-white py-3 rounded-2xl font-medium"
               >
-                {loading ? "Saving..." : "Add Product"}
+                {loading ? t("addProduct.saving") : t("addProduct.submit")}
               </button>
 
               <button
@@ -224,7 +218,7 @@ export default function AddProduct() {
                 onClick={() => navigate("/seller")}
                 className="w-full mt-3 border py-3 rounded-2xl"
               >
-                Cancel
+                {t("common.cancel")}
               </button>
             </div>
           </div>
@@ -265,7 +259,7 @@ const Select = ({ label, options, ...props }) => (
   <div>
     <label className="block text-sm font-medium mb-1">{label}</label>
     <select {...props} className="w-full border rounded-lg px-3 py-2">
-      <option value="">Select</option>
+      <option value="">{label}</option>
       {options.map((o) => (
         <option key={o.value} value={o.value}>
           {o.label}

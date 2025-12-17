@@ -6,6 +6,17 @@ export const createCategory = async (req, res) => {
 };
 
 export const getCategories = async (req, res) => {
+  const {lang = "english"} = req.query;
+  console.log(lang);
   const categories = await Category.find();
-  res.json(categories);
+  const response = categories.map((c) => {
+    const t = c.translations?.find(
+      (tr) => tr.language == lang
+    );
+     return {
+      _id: c._id,
+      name: t?.name || c.translations?.[1]?.name || ""
+    };
+  });
+  res.json(response);
 };

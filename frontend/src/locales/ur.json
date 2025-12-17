@@ -1,0 +1,196 @@
+{
+  "hero": {
+    "title": "لازوال مصنوعات دریافت کریں",
+    "subtitle": "منتخب مجموعے • قابل اعتماد فروخت کنندگان • بہترین قیمتیں",
+    "searchPlaceholder": "مقامی مصنوعات تلاش کریں...",
+    "search": "تلاش کریں",
+    "shopNow": "ابھی خریدیں"
+  },
+  "features": {
+    "secure": {
+      "title": "محفوظ ادائیگیاں",
+      "desc": "100% محفوظ اور انکرپٹڈ لین دین"
+    },
+    "verified": {
+      "title": "تصدیق شدہ فروخت کنندگان",
+      "desc": "صرف قابل اعتماد اور منظور شدہ وینڈرز"
+    },
+    "fast": {
+      "title": "تیز ترسیل",
+      "desc": "ملک بھر میں تیز ڈور اسٹیپ ڈیلیوری"
+    },
+    "returns": {
+      "title": "آسان واپسی",
+      "desc": "پریشانی سے پاک واپسی اور رقم کی واپسی"
+    }
+  },
+  "sections": {
+    "browse": "زمرہ جات دیکھیں",
+    "featured": "نمایاں مصنوعات",
+    "stayUpdated": "باخبر رہیں"
+  },
+  "category": {
+    "all": "تمام"
+  },
+  "footer": {
+    "companyTitle": "ہماری کمپنی",
+    "companyDesc": "محبت اور معیار کے ساتھ منتخب کردہ مصنوعات دریافت کریں۔",
+    "shopTitle": "دکان",
+    "shop": {
+      "home": "ہوم",
+      "marketplace": "مارکیٹ پلیس",
+      "featured": "نمایاں",
+      "categories": "زمرہ جات"
+    },
+    "supportTitle": "سپورٹ",
+    "support": {
+      "contact": "رابطہ کریں",
+      "faq": "سوالات",
+      "returns": "واپسی",
+      "shipping": "شپنگ کی معلومات"
+    },
+    "newsletterTitle": "نیوز لیٹر",
+    "newsletterDesc": "پیشکشیں اور نئی ڈیلز براہ راست اپنے ان باکس میں حاصل کریں۔",
+    "newsletterPlaceholder": "اپنا ای میل درج کریں",
+    "subscribe": "سبسکرائب کریں",
+    "rights": "جملہ حقوق محفوظ ہیں۔"
+  },
+  "addProduct": {
+    "title": "نئی مصنوعات شامل کریں",
+    "subtitle": "اپنی مصنوعات کو مارکیٹ پلیس پر لسٹ کریں",
+    "basicInfo": "بنیادی معلومات",
+    "productName": "پروڈکٹ کا نام *",
+    "description": "تفصیل",
+    "originalLanguage": "اصل زبان",
+    "category": "زمرہ *",
+    "pricingInventory": "قیمت اور انوینٹری",
+    "price": "قیمت (₹) *",
+    "stock": "اسٹاک *",
+    "images": "مصنوعات کی تصاویر",
+    "imagePlaceholder": "https://example.com/image.jpg",
+    "addImage": "+ ایک اور تصویر شامل کریں",
+    "visibility": "نمائش",
+    "visible": "پروڈکٹ فعال اور ظاہر ہے",
+    "submit": "پروڈکٹ شامل کریں",
+    "saving": "محفوظ ہو رہا ہے...",
+    "loading": "پروڈکٹ شامل ہو رہی ہے...",
+    "success": "پروڈکٹ کامیابی سے شامل ہو گئی",
+    "errors": {
+      "required": "براہ کرم تمام مطلوبہ فیلڈز پر کریں",
+      "failed": "پروڈکٹ شامل کرنے میں ناکامی"
+    }
+  },
+  "sort": {
+    "default": "ترتیب دیں",
+    "lowHigh": "قیمت: کم سے زیادہ",
+    "highLow": "قیمت: زیادہ سے کم",
+    "newest": "تازہ ترین"
+  },
+  "newsletter": {
+    "desc": "پیشکشیں اور نئی ڈیلز براہ راست اپنے ان باکس میں حاصل کریں",
+    "placeholder": "اپنا ای میل درج کریں",
+    "subscribe": "سبسکرائب کریں"
+  },
+  "errors": {
+    "fetchProducts": "مصنوعات لوڈ کرنے میں ناکامی",
+    "fetchOrders": "آرڈرز لوڈ کرنے میں ناکامی"
+  },
+  "product": {
+    "inStock": "اسٹاک میں",
+    "outOfStock": "اسٹاک ختم",
+    "category": "زمرہ",
+    "seller": "فروخت کنندہ",
+    "verifiedSeller": "تصدیق شدہ فروخت کنندہ"
+  },
+  "cart": {
+    "add": "کارٹ میں شامل کریں",
+    "added": "کارٹ میں شامل کر دیا گیا",
+    "buyNow": "ابھی خریدیں",
+    "title": "شاپنگ کارٹ",
+    "summary": "آرڈر کا خلاصہ",
+    "subtotal": "ذیلی کل",
+    "shipping": "شپنگ",
+    "free": "مفت",
+    "total": "کل",
+    "checkout": "چیک آؤٹ",
+    "placingOrder": "آرڈر دیا جا رہا ہے...",
+    "loading": "کارٹ لوڈ ہو رہا ہے...",
+    "empty": "آپ کی کارٹ خالی ہے",
+    "continueShopping": "خریداری جاری رکھیں",
+    "remove": "ہٹائیں",
+    "itemRemoved": "آئٹم ہٹا دیا گیا",
+    "orderPlaced": "آرڈر کامیابی سے دیا گیا",
+    "deletedProduct": "حذف شدہ پروڈکٹ",
+    "errors": {
+      "updateQty": "مقدار اپ ڈیٹ کرنے میں ناکامی",
+      "removeItem": "آئٹم ہٹانے میں ناکامی",
+      "checkout": "چیک آؤٹ ناکام"
+    }
+  },
+  "navbar": {
+    "shop": "دکان",
+    "login": "لاگ ان",
+    "signUp": "سائن اپ",
+    "logout": "لاگ آؤٹ",
+    "profile": "پروفائل",
+    "orders": "آرڈرز",
+    "dashboard": "ڈیش بورڈ"
+  },
+  "reviews": {
+    "title": "کسٹمر کے جائزے",
+    "write": "جائزہ لکھیں",
+    "submit": "جمع کریں",
+    "placeholder": "اپنا تجربہ شیئر کریں...",
+    "reviews": "جائزے"
+  },
+  "common": {
+    "loading": "لوڈ ہو رہا ہے...",
+    "loadMore": "مزید لوڈ کریں",
+    "edit": "ترمیم کریں",
+    "delete": "حذف کریں",
+    "cancel": "منسوخ کریں"
+  },
+  "seller": {
+    "dashboard": "سیلر ڈیش بورڈ",
+    "welcome": "خوش آمدید، {{name}}",
+    "addProduct": "پروڈکٹ شامل کریں",
+    "totalProducts": "کل مصنوعات",
+    "totalOrders": "کل آرڈرز",
+    "revenue": "آمدنی",
+    "yourProducts": "آپ کی مصنوعات",
+    "orders": "آرڈرز",
+    "noProducts": "ابھی تک کوئی مصنوعات شامل نہیں کی گئیں",
+    "addFirstProduct": "اپنی پہلی پروڈکٹ شامل کریں",
+    "noOrders": "کوئی آرڈر نہیں",
+    "confirmDelete": "کیا آپ اس پروڈکٹ کو مستقل طور پر حذف کرنا چاہتے ہیں؟",
+    "stock": "اسٹاک"
+  },
+  "order": {
+    "order": "آرڈر",
+    "placed": "دیا گیا",
+    "shipped": "بھیج دیا گیا",
+    "cancelled": "منسوخ",
+    "delivered": "ڈیلیور ہو گیا",
+    "total": "کل"
+  },
+  "search": {
+    "title": "مصنوعات تلاش کریں",
+    "subtitle": "نام، قیمت یا زمرہ کے لحاظ سے مصنوعات تلاش کریں",
+    "placeholder": "مصنوعات تلاش کریں...",
+    "allCategories": "تمام زمرہ جات",
+    "relevance": "مطابقت",
+    "minPrice": "کم سے کم قیمت",
+    "maxPrice": "زیادہ سے زیادہ قیمت",
+    "resetFilters": "فلٹرز ری سیٹ کریں",
+    "noResults": "کوئی مصنوعات نہیں ملیں",
+    "tryAgain": "مطلوبہ الفاظ یا فلٹرز تبدیل کرنے کی کوشش کریں"
+  },
+  "orders": {
+    "myOrders": "میرے آرڈرز",
+    "emptyTitle": "ابھی تک کوئی آرڈر نہیں",
+    "emptySubtitle": "خریداری شروع کریں اور آپ کے آرڈرز یہاں ظاہر ہوں گے۔",
+    "noItems": "کوئی آئٹم نہیں ملا",
+    "qty": "مقدار",
+    "deletedProduct": "حذف شدہ پروڈکٹ"
+  }
+}
