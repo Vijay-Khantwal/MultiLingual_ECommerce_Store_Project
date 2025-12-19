@@ -4,7 +4,7 @@ import MarketPlace from "./pages/MarketPlace";
 import NotFound from "./pages/NotFound";
 
 import Login from "./pages/auth/Login";
-import Signup from "./pages/auth/SignUp";
+import Signup from "./pages/auth/Signup";
 
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
