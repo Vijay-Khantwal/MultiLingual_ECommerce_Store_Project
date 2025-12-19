@@ -47,7 +47,6 @@ export default function AddProduct() {
       ...form,
       images: form.images.filter((_, idx) => idx !== i),
     });
-
   const submit = async (e) => {
     e.preventDefault();
 
@@ -83,7 +82,7 @@ export default function AddProduct() {
     <>
       <Navbar />
 
-      <div className="max-w-5xl mx-auto px-6 py-10">
+      <div className="max-w-7xl w-full mx-auto px-6 py-10">
         {/* HEADER */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-[#2d2d2d]">
@@ -100,46 +99,48 @@ export default function AddProduct() {
           {/* LEFT : BASIC INFO */}
           <div className="lg:col-span-3 space-y-6">
             <Card title={t("addProduct.basicInfo")}>
-              <Input
-                label={t("addProduct.productName")}
-                value={form.name}
-                onChange={(e) => update("name", e.target.value)}
-              />
+              <div className="flex flex-col gap-3">
+                <Input
+                  label={t("addProduct.productName")}
+                  value={form.name}
+                  onChange={(e) => update("name", e.target.value)}
+                />
 
-              <Textarea
-                label={t("addProduct.description")}
-                value={form.description}
-                onChange={(e) => update("description", e.target.value)}
-              />
+                <Textarea
+                  label={t("addProduct.description")}
+                  value={form.description}
+                  onChange={(e) => update("description", e.target.value)}
+                />
 
-              <Select
-                label={t("addProduct.originalLanguage")}
-                value={form.language}
-                onChange={(e) => update("language", e.target.value)}
-                options={[
-                  { value: "english", label: "English" },
-                  { value: "hindi", label: "हिंदी" },
-                  { value: "punjabi", label: "ਪੰਜਾਬੀ" },
-                  { value: "gujarati", label: "ગુજરાતી" },
-                  { value: "tamil", label: "தமிழ்" },
-                  { value: "telugu", label: "తెలుగు" },
-                  { value: "bhojpuri", label: "भोजपुरी" },
-                  { value: "malyalam", label: "മലയാളം" },
-                  { value: "marathi", label: "मराठी" },
-                  { value: "urdu", label: "اردو" },
-                  { value: "bengali", label: "বাংলা" },
-                ]}
-              />
+                <Select
+                  label={t("addProduct.originalLanguage")}
+                  value={form.language}
+                  onChange={(e) => update("language", e.target.value)}
+                  options={[
+                    { value: "english", label: "English" },
+                    { value: "hindi", label: "हिंदी" },
+                    { value: "punjabi", label: "ਪੰਜਾਬੀ" },
+                    { value: "gujarati", label: "ગુજરાતી" },
+                    { value: "tamil", label: "தமிழ்" },
+                    { value: "telugu", label: "తెలుగు" },
+                    { value: "bhojpuri", label: "भोजपुरी" },
+                    { value: "malyalam", label: "മലയാളം" },
+                    { value: "marathi", label: "मराठी" },
+                    { value: "urdu", label: "اردو" },
+                    { value: "bengali", label: "বাংলা" },
+                  ]}
+                />
 
-              <Select
-                label={t("addProduct.category")}
-                value={form.categoryId}
-                onChange={(e) => update("categoryId", e.target.value)}
-                options={categories.map((c) => ({
-                  value: c._id,
-                  label: c.name,
-                }))}
-              />
+                <Select
+                  label={t("addProduct.category")}
+                  value={form.categoryId}
+                  onChange={(e) => update("categoryId", e.target.value)}
+                  options={categories.map((c) => ({
+                    value: c._id,
+                    label: c.name,
+                  }))}
+                />
+              </div>
             </Card>
           </div>
 

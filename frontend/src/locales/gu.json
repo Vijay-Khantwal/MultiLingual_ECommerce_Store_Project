@@ -192,5 +192,24 @@
     "noItems": "કોઈ આઇટમ્સ મળી નથી",
     "qty": "જથ્થો",
     "deletedProduct": "કાઢી નાખેલ ઉત્પાદન"
-  }
+  },
+  "auth": {
+  "welcomeBack": "ફરી સ્વાગત છે",
+  "loginSubtitle": "ખરીદી ચાલુ રાખવા માટે લોગિન કરો",
+  "login": "લોગિન",
+  "loginSuccess": "ફરી સ્વાગત છે!",
+  "loginFailed": "લોગિન નિષ્ફળ",
+  "createAccount": "ખાતું બનાવો",
+  "signupSubtitle": "સેકંડમાં અમારા માર્કેટપ્લેસમાં જોડાઓ",
+  "signupSuccess": "ખાતું સફળતાપૂર્વક બનાવવામાં આવ્યું",
+  "signupFailed": "સાઇન અપ નિષ્ફળ",
+  "name": "નામ",
+  "email": "ઇમેઇલ",
+  "password": "પાસવર્ડ",
+  "accountType": "ખાતાનો પ્રકાર",
+  "consumer": "ગ્રાહક",
+  "seller": "વિક્રેતા",
+  "noAccount": "નવા છો?",
+  "alreadyAccount": "પહેલેથી જ ખાતું છે?"
+}
 }

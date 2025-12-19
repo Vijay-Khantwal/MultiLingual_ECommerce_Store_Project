@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { getProduct } from "../api/product_api";
 import { addToCart } from "../api/cart_api";
 import { placeOrder } from "../api/order_api";
@@ -8,6 +7,7 @@ import { getReviews, addReview } from "../api/review_api";
 import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "react-i18next";
+import Navbar from "../components/NavBar";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -32,9 +32,7 @@ export default function ProductDetails() {
   if (!product) return null;
 
   const avgRating = reviews.length
-    ? (
-        reviews.reduce((a, r) => a + r.rating, 0) / reviews.length
-      ).toFixed(1)
+    ? (reviews.reduce((a, r) => a + r.rating, 0) / reviews.length).toFixed(1)
     : "0.0";
 
   const submitReview = async () => {
@@ -122,17 +120,13 @@ export default function ProductDetails() {
 
           <div className="grid grid-cols-2 gap-4 bg-[#e8dfd7] p-4 rounded-xl">
             <div>
-              <p className="text-sm text-[#6b6b6b]">
-                {t("product.category")}
-              </p>
+              <p className="text-sm text-[#6b6b6b]">{t("product.category")}</p>
               <p className="font-medium text-[#3d3d3d]">
                 {product.categoryId?.name || "—"}
               </p>
             </div>
             <div>
-              <p className="text-sm text-[#6b6b6b]">
-                {t("product.seller")}
-              </p>
+              <p className="text-sm text-[#6b6b6b]">{t("product.seller")}</p>
               <p className="font-medium text-[#3d3d3d]">
                 {product.sellerId?.name || t("product.verifiedSeller")}
               </p>
@@ -141,8 +135,16 @@ export default function ProductDetails() {
 
           <div className="flex gap-4">
             <button
-              onClick={() => {
-                addToCart({ productId: id, quantity: 1, product });
+              onClick={async () => {
+                const success = await addToCart({
+                  productId: id,
+                  quantity: 1,
+                  product,
+                });
+
+                if (!success) {
+                  navigate("/login");
+                }
               }}
               disabled={isInCart}
               className={`flex-1 border-2 border-[#c9b5a0] text-[#3d3d3d] px-6 py-3 rounded-xl transition font-medium ${
@@ -151,14 +153,21 @@ export default function ProductDetails() {
                   : "hover:bg-[#e8dfd7]"
               }`}
             >
-              {isInCart
-                ? t("cart.added")
-                : t("cart.add")}
+              {isInCart ? t("cart.added") : t("cart.add")}
             </button>
 
             <button
-              onClick={() => {
-                addToCart({ productId: id, quantity: 1, product });
+              onClick={async () => {
+                const success = await addToCart({
+                  productId: id,
+                  quantity: 1,
+                  product,
+                });
+
+                if (!success) {
+                  navigate("/login");
+                  return;
+                }
                 navigate("/cart");
               }}
               className="flex-1 bg-[#c9945c] text-white px-6 py-3 rounded-xl hover:bg-[#b88650] transition font-medium"

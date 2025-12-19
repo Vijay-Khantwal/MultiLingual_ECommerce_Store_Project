@@ -192,5 +192,24 @@
     "noItems": "کوئی آئٹم نہیں ملا",
     "qty": "مقدار",
     "deletedProduct": "حذف شدہ پروڈکٹ"
-  }
+  },
+  "auth": {
+  "welcomeBack": "خوش آمدید",
+  "loginSubtitle": "خریداری جاری رکھنے کے لیے لاگ ان کریں",
+  "login": "لاگ ان",
+  "loginSuccess": "خوش آمدید!",
+  "loginFailed": "لاگ ان ناکام ہو گیا",
+  "createAccount": "اکاؤنٹ بنائیں",
+  "signupSubtitle": "سیکنڈوں میں ہماری مارکیٹ پلیس میں شامل ہوں",
+  "signupSuccess": "اکاؤنٹ کامیابی سے بن گیا",
+  "signupFailed": "سائن اپ ناکام ہو گیا",
+  "name": "نام",
+  "email": "ای میل",
+  "password": "پاس ورڈ",
+  "accountType": "اکاؤنٹ کی قسم",
+  "consumer": "صارف",
+  "seller": "فروخت کنندہ",
+  "noAccount": "نئے ہیں؟",
+  "alreadyAccount": "پہلے سے اکاؤنٹ ہے؟"
+}
 }

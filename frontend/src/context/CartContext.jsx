@@ -1,5 +1,9 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getCart, addToCart as apiAddToCart, removeFromCart as apiRemoveFromCart } from "../api/cart_api.js";
+import {
+  getCart,
+  addToCart as apiAddToCart,
+  removeFromCart as apiRemoveFromCart,
+} from "../api/cart_api.js";
 import { useAuth } from "../auth/AuthContext";
 import toast from "react-hot-toast";
 
@@ -9,7 +13,7 @@ export const useCart = () => useContext(CartContext);
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const {lang} = useAuth();
+  const { lang } = useAuth();
 
   // Load cart initially
   useEffect(() => {
@@ -27,44 +31,43 @@ export function CartProvider({ children }) {
   };
 
   const addToCart = async ({ productId, quantity, product }) => {
-  // ✅ Optimistic update
-  setCartItems((prev) => {
-    const exists = prev.some(
-      (item) => item.product._id === productId
-    );
-    if (exists) return prev;
+    try {
+      await apiAddToCart({ productId, quantity });
 
-    return [
-      ...prev,
-      {
-        productId,
-        product,
-        quantity,
-      },
-    ];
-  });
+      setCartItems((prev) => {
+        const exists = prev.some((item) => item.product._id === productId);
+        if (exists) return prev;
 
-  try {
-    await apiAddToCart({ productId, quantity });
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to add to cart");
-  }
-};
+        return [...prev, { productId, product, quantity }];
+      });
 
+      toast.success("Added to cart");
+      return true;
+    } catch (err) {
+      if (err.code === 401 || err.response?.status === 401) {
+        toast.error("Please login to add items to cart");
+        return false;
+      }
+
+      toast.error("Failed to add to cart");
+      return false;
+    }
+  };
 
   const removeFromCart = async (productId) => {
-    setCartItems(prev => prev.filter(i => i._id !== productId));
+    setCartItems((prev) => prev.filter((i) => i._id !== productId));
     try {
       // console.log("getting",productId);
-      await apiRemoveFromCart({itemId : productId });
+      await apiRemoveFromCart({ itemId: productId });
     } catch {
       loadCart();
     }
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, loadCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, loadCart }}
+    >
       {children}
     </CartContext.Provider>
   );

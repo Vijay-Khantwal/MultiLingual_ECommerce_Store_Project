@@ -5,18 +5,17 @@ export const addToCart = async ({ productId, quantity, navigate }) => {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    toast.error("Login required to add items to cart");
-    navigate("/login");
-    return;
+    const err = new Error("NOT_AUTHENTICATED");
+    err.code = 401;
+    throw err;
   }
-
   try {
     const { data } = await api.post("/cart/add", {
       productId,
       quantity,
     });
 
-    toast.success("Added to cart");
+    // toast.success("Added to cart");
     return data;
   } catch (err) {
     if (err.response?.status === 401) {
@@ -33,7 +32,7 @@ export const addToCart = async ({ productId, quantity, navigate }) => {
 export const removeFromCart = async (queryParams) => {
   try {
     // console.log("removing", queryParams);
-    const { data } = await api.delete(`/cart/remove`, { params :  queryParams});
+    const { data } = await api.delete(`/cart/remove`, { params: queryParams });
     return data;
   } catch (err) {
     toast.error(err.response?.data?.message || "Failed to remove item");

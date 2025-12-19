@@ -192,5 +192,24 @@
     "noItems": "ਕੋਈ ਆਈਟਮ ਨਹੀਂ ਮਿਲੀ",
     "qty": "ਮਾਤਰਾ",
     "deletedProduct": "ਹਟਾਇਆ ਗਿਆ ਉਤਪਾਦ"
-  }
+  },
+  "auth": {
+  "welcomeBack": "ਜੀ ਆਇਆਂ ਨੂੰ",
+  "loginSubtitle": "ਖਰੀਦਦਾਰੀ ਜਾਰੀ ਰੱਖਣ ਲਈ ਲੌਗਇਨ ਕਰੋ",
+  "login": "ਲੌਗਇਨ",
+  "loginSuccess": "ਜੀ ਆਇਆਂ ਨੂੰ!",
+  "loginFailed": "ਲੌਗਇਨ ਅਸਫਲ",
+  "createAccount": "ਖਾਤਾ ਬਣਾਓ",
+  "signupSubtitle": "ਕੁਝ ਸਕਿੰਟਾਂ ਵਿੱਚ ਸਾਡੇ ਬਾਜ਼ਾਰ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+  "signupSuccess": "ਖਾਤਾ ਸਫਲਤਾਪੂਰਵਕ ਬਣਾਇਆ ਗਿਆ",
+  "signupFailed": "ਸਾਈਨ ਅਪ ਅਸਫਲ",
+  "name": "ਨਾਮ",
+  "email": "ਈਮੇਲ",
+  "password": "ਪਾਸਵਰਡ",
+  "accountType": "ਖਾਤੇ ਦੀ ਕਿਸਮ",
+  "consumer": "ਗਾਹਕ",
+  "seller": "ਵਿਕਰੇਤਾ",
+  "noAccount": "ਨਵੇਂ ਹੋ?",
+  "alreadyAccount": "ਪਹਿਲਾਂ ਹੀ ਖਾਤਾ ਹੈ?"
+}
 }

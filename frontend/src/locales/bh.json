@@ -192,5 +192,24 @@
     "noItems": "कउनो सामान ना मिलल",
     "qty": "मात्रा",
     "deletedProduct": "हटावल गइल सामान"
-  }
+  },
+  "auth": {
+  "welcomeBack": "फेरु स्वागत बा",
+  "loginSubtitle": "खरीदारी करे खातिर लॉगिन करीं",
+  "login": "लॉगिन",
+  "loginSuccess": "फेरु स्वागत बा!",
+  "loginFailed": "लॉगिन फेल हो गइल",
+  "createAccount": "खाता बनाईं",
+  "signupSubtitle": "कुछ सेकंड में हमनी के बाजार से जुड़ीं",
+  "signupSuccess": "खाता बन गइल",
+  "signupFailed": "साइन अप फेल हो गइल",
+  "name": "नाम",
+  "email": "ईमेल",
+  "password": "पासवर्ड",
+  "accountType": "खाता के प्रकार",
+  "consumer": "ग्राहक",
+  "seller": "बेचे वाला",
+  "noAccount": "नया बानी?",
+  "alreadyAccount": "पहिले से खाता बा?"
+}
 }

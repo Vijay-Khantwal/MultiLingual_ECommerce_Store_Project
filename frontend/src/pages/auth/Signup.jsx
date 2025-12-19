@@ -1,9 +1,12 @@
 import { registerUser } from "../../api/auth_api";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import NavBar from "../../components/NavBar";
+import { useTranslation } from "react-i18next";
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -14,84 +17,104 @@ export default function Signup() {
         name: f.name.value,
         email: f.email.value,
         password: f.password.value,
-        role: f.role.value, // CONSUMER | SELLER
+        role: f.role.value,
       });
 
-      toast.success("Account created successfully");
+      toast.success(t("auth.signupSuccess"));
       navigate("/login");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Signup failed");
+      toast.error(
+        err.response?.data?.message || t("auth.signupFailed")
+      );
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f1ed] px-6">
-      <form
-        onSubmit={submit}
-        className="w-full max-w-md bg-white border border-[#c9b5a0] rounded-2xl p-8 shadow-sm"
-      >
-        <h1 className="text-2xl font-bold text-[#2d2d2d] mb-2">
-          Create Account
-        </h1>
-        <p className="text-sm text-[#6b6b6b] mb-6">
-          Join our marketplace in seconds
-        </p>
+    <div className="min-h-screen flex flex-col bg-[#f5f1ed] overflow-hidden">
+      <NavBar />
 
-        {/* NAME */}
-        <div className="mb-4">
-          <label className="text-sm text-[#3d3d3d]">Name</label>
-          <input
-            name="name"
-            required
-            className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
-          />
-        </div>
+      {/* CENTER AREA */}
+      <div className="flex flex-1 items-center justify-center px-4">
+        <form
+          onSubmit={submit}
+          className="w-full max-w-md bg-white border border-[#c9b5a0] rounded-2xl p-8 shadow-sm"
+        >
+          <h1 className="text-2xl font-bold text-[#2d2d2d] mb-2">
+            {t("auth.createAccount")}
+          </h1>
 
-        {/* EMAIL */}
-        <div className="mb-4">
-          <label className="text-sm text-[#3d3d3d]">Email</label>
-          <input
-            name="email"
-            type="email"
-            required
-            className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
-          />
-        </div>
+          <p className="text-sm text-[#6b6b6b] mb-6">
+            {t("auth.signupSubtitle")}
+          </p>
 
-        {/* PASSWORD */}
-        <div className="mb-4">
-          <label className="text-sm text-[#3d3d3d]">Password</label>
-          <input
-            name="password"
-            type="password"
-            required
-            className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
-          />
-        </div>
+          {/* NAME */}
+          <div className="mb-4">
+            <label className="text-sm text-[#3d3d3d]">
+              {t("auth.name")}
+            </label>
+            <input
+              name="name"
+              required
+              className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
+            />
+          </div>
 
-        {/* ROLE */}
-        <div className="mb-6">
-          <label className="text-sm text-[#3d3d3d]">Account Type</label>
-          <select
-            name="role"
-            className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg bg-white"
-          >
-            <option value="CONSUMER">Consumer</option>
-            <option value="SELLER">Seller</option>
-          </select>
-        </div>
+          {/* EMAIL */}
+          <div className="mb-4">
+            <label className="text-sm text-[#3d3d3d]">
+              {t("auth.email")}
+            </label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
+            />
+          </div>
 
-        <button className="w-full bg-[#c9945c] hover:bg-[#b88650] text-white py-3 rounded-full font-medium transition">
-          Create Account
-        </button>
+          {/* PASSWORD */}
+          <div className="mb-4">
+            <label className="text-sm text-[#3d3d3d]">
+              {t("auth.password")}
+            </label>
+            <input
+              name="password"
+              type="password"
+              required
+              className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c9945c]"
+            />
+          </div>
 
-        <p className="text-center text-sm text-[#6b6b6b] mt-6">
-          Already have an account?{" "}
-          <Link to="/login" className="text-[#c9945c] hover:underline">
-            Login
-          </Link>
-        </p>
-      </form>
+          {/* ROLE */}
+          <div className="mb-6">
+            <label className="text-sm text-[#3d3d3d]">
+              {t("auth.accountType")}
+            </label>
+            <select
+              name="role"
+              className="w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg bg-white"
+            >
+              <option value="CONSUMER">
+                {t("auth.consumer")}
+              </option>
+              <option value="SELLER">
+                {t("auth.seller")}
+              </option>
+            </select>
+          </div>
+
+          <button className="w-full bg-[#c9945c] hover:bg-[#b88650] text-white py-3 rounded-full font-medium transition">
+            {t("auth.createAccount")}
+          </button>
+
+          <p className="text-center text-sm text-[#6b6b6b] mt-6">
+            {t("auth.alreadyAccount")}{" "}
+            <Link to="/login" className="text-[#c9945c] hover:underline">
+              {t("auth.login")}
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

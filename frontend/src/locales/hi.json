@@ -192,5 +192,24 @@
     "newsletterPlaceholder": "अपना ईमेल दर्ज करें",
     "subscribe": "सब्सक्राइब करें",
     "rights": "सर्वाधिकार सुरक्षित।"
-  }
+  },
+  "auth": {
+  "welcomeBack": "फिर से स्वागत है",
+  "loginSubtitle": "खरीदारी जारी रखने के लिए लॉगिन करें",
+  "login": "लॉगिन",
+  "loginSuccess": "फिर से स्वागत है!",
+  "loginFailed": "लॉगिन विफल रहा",
+  "createAccount": "खाता बनाएं",
+  "signupSubtitle": "कुछ ही सेकंड में हमारे मार्केटप्लेस से जुड़ें",
+  "signupSuccess": "खाता सफलतापूर्वक बनाया गया",
+  "signupFailed": "साइन अप विफल रहा",
+  "name": "नाम",
+  "email": "ईमेल",
+  "password": "पासवर्ड",
+  "accountType": "खाते का प्रकार",
+  "consumer": "ग्राहक",
+  "seller": "विक्रेता",
+  "noAccount": "यहाँ नए हैं?",
+  "alreadyAccount": "पहले से खाता है?"
+}
 }
