@@ -1,7 +1,7 @@
 import { registerUser } from "../../api/auth_api";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/Navbar";
 import { useTranslation } from "react-i18next";
 
 export default function Signup() {

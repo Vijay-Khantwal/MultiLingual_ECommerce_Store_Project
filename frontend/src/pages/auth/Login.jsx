@@ -2,7 +2,7 @@ import { loginUser } from "../../api/auth_api";
 import { useAuth } from "../../auth/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import Navbar from "../../components/NavBar";
+import Navbar from "../../components/Navbar";
 import { useTranslation } from "react-i18next";
 
 export default function Login() {

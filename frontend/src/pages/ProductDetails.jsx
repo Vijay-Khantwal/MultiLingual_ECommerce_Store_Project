@@ -7,7 +7,7 @@ import { getReviews, addReview } from "../api/review_api";
 import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "react-i18next";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 export default function ProductDetails() {
   const { id } = useParams();
