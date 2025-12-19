@@ -53,8 +53,9 @@ async function getTranslations(d) {
       cleanText = cleanText.replace(/^```\s*/, "").replace(/\s*```$/, "");
     }
 
+    console.log("Translations received:", cleanText);
     const parsed = JSON.parse(cleanText);
-    await fs.writeFile("output.json", JSON.stringify(parsed, null, 2));
+    // await fs.writeFile("output.json", JSON.stringify(parsed, null, 2));
     // console.log("Successfully saved translations to output.json");
     return cleanText;
   } catch (error) {
