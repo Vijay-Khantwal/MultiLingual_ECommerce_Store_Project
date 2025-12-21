@@ -7,6 +7,7 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const { cartItems, addToCart } = useCart();
   const isInCart = cartItems.some((item) => item.product._id === product._id);
+  const isOutOfStock = !product.stock || product.stock <= 0;
 
   return (
     <div className="bg-white border border-[#c9b5a0] rounded-lg overflow-hidden hover:shadow-lg transition flex flex-col">
@@ -44,15 +45,21 @@ export default function ProductCard({ product }) {
         </div>
 
         <button
-          disabled={isInCart}
-          onClick={() => addToCart({ productId: product._id, quantity: 1, product })}
+          disabled={isInCart || isOutOfStock}
+          onClick={() =>
+            addToCart({ productId: product._id, quantity: 1, product })
+          }
           className={`mt-auto py-2 rounded-xl text-white w-full font-medium ${
-            isInCart
-              ? "bg-[#c9b5c0]/20 cursor-not-allowed"
+            isInCart || isOutOfStock
+              ? "bg-[#c9b5c0]/30 cursor-not-allowed"
               : "bg-[#c9945c] hover:bg-[#b88650]"
           }`}
         >
-          {isInCart ? t("cart.added") : t("cart.add")}
+          {isOutOfStock
+            ? t("product.outOfStock")
+            : isInCart
+            ? t("cart.added")
+            : t("cart.add")}
         </button>
       </div>
     </div>

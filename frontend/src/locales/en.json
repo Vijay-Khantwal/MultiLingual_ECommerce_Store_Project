@@ -56,28 +56,33 @@
     "rights": "All rights reserved."
   },
   "addProduct": {
-    "title": "Add New Product",
-    "subtitle": "List your product on the marketplace",
+    "title": "Add Product",
+    "subtitle": "Add new product to your catalog",
     "basicInfo": "Basic Information",
-    "productName": "Product Name *",
+    "productName": "Product Name",
     "description": "Description",
     "originalLanguage": "Original Language",
-    "category": "Category *",
+    "category": "Category",
     "pricingInventory": "Pricing & Inventory",
-    "price": "Price (₹) *",
-    "stock": "Stock *",
-    "images": "Product Images",
-    "imagePlaceholder": "https://example.com/image.jpg",
-    "addImage": "+ Add another image",
+    "price": "Price",
+    "stock": "Stock",
+    "images": "Images",
+    "imagePlaceholder": "Enter image URL",
+    "addImage": "Add another image",
     "visibility": "Visibility",
     "visible": "Product is active and visible",
-    "submit": "Add Product",
+    "submit": "Save Product",
     "saving": "Saving...",
-    "loading": "Adding product...",
-    "success": "Product added successfully",
+    "loading": "Processing...",
+    "success": "Product added successfully!",
     "errors": {
-      "required": "Please fill all required fields",
-      "failed": "Failed to add product"
+      "required": "Please fill in all required fields.",
+      "nameRequired": "Product name is required.",
+      "invalidPrice": "Price must be a valid number greater than 0.",
+      "invalidStock": "Stock must be a valid number.",
+      "categoryRequired": "Category is required.",
+      "imagesRequired": "Please add at least one image.",
+      "failed": "Failed to add product."
     }
   },
   "sort": {
@@ -93,7 +98,9 @@
   },
   "errors": {
     "fetchProducts": "Failed to fetch products",
-    "fetchOrders": "Failed to load orders"
+    "fetchOrders": "Failed to load orders",
+    "invalidPriceStock": "Price must be greater than zero and stock cannot be negative",
+    "updateFailed": "Failed to update product. Please try again."
   },
   "product": {
     "inStock": "In Stock",
@@ -103,6 +110,8 @@
     "verifiedSeller": "Verified Seller"
   },
   "cart": {
+    "loginRequired": "Please login to add items to cart",
+    "sessionExpired": "Session expired. Please login again",
     "add": "Add to Cart",
     "added": "Added to Cart",
     "buyNow": "Buy Now",
@@ -124,7 +133,8 @@
     "errors": {
       "updateQty": "Failed to update quantity",
       "removeItem": "Failed to remove item",
-      "checkout": "Checkout failed"
+      "checkout": "Checkout failed",
+      "addFailed": "Failed to add item to cart"
     }
   },
   "navbar": {
@@ -144,14 +154,19 @@
     "reviews": "reviews"
   },
   "common": {
+    "name": "Product Name",
+    "price": "Price",
+    "save": "Save",
     "loading": "Loading...",
     "loadMore": "Load More",
     "edit": "Edit",
     "delete": "Delete",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "somethingWentWrong": "Something went wrong"
   },
-
   "seller": {
+    "editProduct": "Edit Product",
+    "productUpdated": "Product updated successfully",
     "dashboard": "Seller Dashboard",
     "welcome": "Welcome back, {{name}}",
     "addProduct": "Add Product",
@@ -167,6 +182,7 @@
     "stock": "Stock"
   },
   "order": {
+    "paid": "Paid",
     "order": "Order",
     "placed": "Placed",
     "shipped": "Shipped",
@@ -176,6 +192,7 @@
   },
   "search": {
     "title": "Search Products",
+    "inStock": "In Stock Only",
     "subtitle": "Find products by name, price or category",
     "placeholder": "Search products...",
     "allCategories": "All Categories",
@@ -192,29 +209,70 @@
     "emptySubtitle": "Start shopping and your orders will appear here.",
     "noItems": "No items found",
     "qty": "Qty",
+    "deliveryAddress": "Delivery Address",
     "deletedProduct": "Deleted Product"
   },
-   "auth": {
-    "welcomeBack": "Welcome Back",
-    "loginSubtitle": "Login to continue shopping",
-    "login": "Login",
-    "loginSuccess": "Welcome back!",
-    "loginFailed": "Login failed",
-
+  "auth": {
     "createAccount": "Create Account",
-    "signupSubtitle": "Join our marketplace in seconds",
-    "signupSuccess": "Account created successfully",
-    "signupFailed": "Signup failed",
-
-    "name": "Name",
+    "signupSubtitle": "Sign up to get started",
+    "login": "Login",
+    "welcomeBack": "Welcome Back",
+    "loginSubtitle": "Enter your credentials to access your account",
+    "noAccount": "Don't have an account?",
+    "alreadyAccount": "Already have an account?",
     "email": "Email",
     "password": "Password",
-
+    "name": "Name",
     "accountType": "Account Type",
     "consumer": "Consumer",
     "seller": "Seller",
-
-    "noAccount": "New here?",
-    "alreadyAccount": "Already have an account?"
+    "address": "Address",
+    "street": "Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "pincode": "Pincode",
+    "signupSuccess": "Account created successfully!",
+    "signupFailed": "Failed to create account.",
+    "loginSuccess": "Logged in successfully!",
+    "loginFailed": "Login failed.",
+    "nameRequired": "Name is required.",
+    "emailRequired": "Email is required.",
+    "invalidEmail": "Invalid email format.",
+    "passwordRequired": "Password is required.",
+    "addressRequired": "Please fill in all address fields.",
+    "invalidPincode": "Invalid pincode.",
+    "passwordTooShort": "Password must be at least 6 characters."
+  },
+  "profile": {
+    "title": "My Profile",
+    "name": "Full Name",
+    "update": "Update Profile",
+    "street": "Street",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "pincode": "Pincode",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordTooShort": "Password must be at least 6 characters.",
+    "passwordMismatch": "Passwords do not match.",
+    "address": "Please complete all address fields.",
+    "invalidPincode": "Pincode must be 6 digits.",
+    "updated": "Profile updated successfully!",
+    "updateFailed": "Failed to update profile."
+  },
+  "payment": {
+    "confirm": "Confirm Payment",
+    "totalAmount": "Total Amount",
+    "payNow": "Pay Now",
+    "checkout": "Cart Checkout",
+    "success": "Order placed successfully!",
+    "failed": "Payment failed or cancelled",
+    "verifyFailed": "Payment verification failed",
+    "sdkNotLoaded": "Razorpay SDK not loaded",
+    "initFailed": "Unable to initiate payment. Please check your address."
   }
 }

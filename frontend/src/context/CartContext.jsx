@@ -4,6 +4,8 @@ import {
   addToCart as apiAddToCart,
   removeFromCart as apiRemoveFromCart,
 } from "../api/cart_api.js";
+import { useTranslation } from "react-i18next";
+
 import { useAuth } from "../auth/AuthContext";
 import toast from "react-hot-toast";
 
@@ -14,6 +16,7 @@ export const useCart = () => useContext(CartContext);
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const { lang } = useAuth();
+  const { t } = useTranslation();
 
   // Load cart initially
   useEffect(() => {
@@ -41,15 +44,15 @@ export function CartProvider({ children }) {
         return [...prev, { productId, product, quantity }];
       });
 
-      toast.success("Added to cart");
+      toast.success(t("cart.added"));
       return true;
     } catch (err) {
       if (err.code === 401 || err.response?.status === 401) {
-        toast.error("Please login to add items to cart");
+        toast.error(t("cart.loginRequired"));
         return false;
       }
 
-      toast.error("Failed to add to cart");
+      toast.error(t("cart.errors.addFailed"));
       return false;
     }
   };

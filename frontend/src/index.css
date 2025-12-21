@@ -12,3 +12,8 @@ button{
 html {
   overflow-y: scroll; /* always reserve scrollbar space */
 }
+
+.input {
+  @apply w-full mt-1 px-4 py-2 border border-[#c9b5a0] rounded-lg
+  focus:outline-none focus:ring-2 focus:ring-[#c9945c] bg-white;
+}

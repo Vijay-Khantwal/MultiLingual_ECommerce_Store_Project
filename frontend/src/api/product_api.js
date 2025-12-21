@@ -17,3 +17,7 @@ export const searchProducts = (queryParams) =>
   api.get("/products/search", {
     params: queryParams,
   });
+
+  
+export const updateProduct = (id, payload) =>
+  api.put(`/seller/product/${id}`, payload); 

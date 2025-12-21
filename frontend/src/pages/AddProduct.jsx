@@ -50,23 +50,28 @@ export default function AddProduct() {
   const submit = async (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.price || !form.categoryId) {
-      toast.error(t("addProduct.errors.required"));
-      return;
-    }
+    // ---------- BASIC VALIDATION ----------
+    if (!form.name.trim())
+      return toast.error(t("addProduct.errors.nameRequired"));
+    if (!form.price || isNaN(form.price) || Number(form.price) <= 0)
+      return toast.error(t("addProduct.errors.invalidPrice"));
+    if (!form.categoryId)
+      return toast.error(t("addProduct.errors.categoryRequired"));
+    if (form.stock && (isNaN(form.stock) || Number(form.stock) < 0))
+      return toast.error(t("addProduct.errors.invalidStock"));
 
     setLoading(true);
     const toastId = toast.loading(t("addProduct.loading"));
 
     try {
       await createProduct({
-        name: form.name,
-        description: form.description,
+        name: form.name.trim(),
+        description: form.description.trim(),
         lang: form.language,
         categoryId: form.categoryId,
         price: Number(form.price),
         stock: Number(form.stock),
-        images: form.images.filter(Boolean),
+        images: form.images
       });
 
       toast.success(t("addProduct.success"), { id: toastId });

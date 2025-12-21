@@ -1,5 +1,6 @@
 import api from "./axios";
 import { toast } from "react-hot-toast";
+import i18n from "../i18n";
 
 export const addToCart = async ({ productId, quantity, navigate }) => {
   const token = localStorage.getItem("token");
@@ -15,17 +16,16 @@ export const addToCart = async ({ productId, quantity, navigate }) => {
       quantity,
     });
 
-    // toast.success("Added to cart");
     return data;
   } catch (err) {
     if (err.response?.status === 401) {
-      toast.error("Session expired. Please login again");
+      toast.error(i18n.t("cart.sessionExpired"));
       localStorage.clear();
       navigate("/login");
       return;
     }
 
-    toast.error(err.response?.data?.message || "Something went wrong");
+    console.error(err);
   }
 };
 
@@ -35,7 +35,7 @@ export const removeFromCart = async (queryParams) => {
     const { data } = await api.delete(`/cart/remove`, { params: queryParams });
     return data;
   } catch (err) {
-    toast.error(err.response?.data?.message || "Failed to remove item");
+    toast.error(i18n.t("cart.errors.removeItem"));
     throw err;
   }
 };

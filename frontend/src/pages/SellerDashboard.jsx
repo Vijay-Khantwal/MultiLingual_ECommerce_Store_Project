@@ -2,22 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import Navbar from "../components/Navbar";
-import {
-  getSellerProducts,
-  deleteProduct,
-} from "../api/product_api";
-import {
-  getSellerOrders,
-  updateOrderStatus,
-} from "../api/order_api";
+import { getSellerProducts, deleteProduct } from "../api/product_api";
+import { getSellerOrders, updateOrderStatus } from "../api/order_api";
 import { useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
+import EditProductModal from "../components/EditProductModal";
 
 const statusColors = {
   PLACED: "bg-[#e8dfd7] text-[#2d2d2d]",
   CANCELLED: "bg-[#d4e8d8] text-[#2d5c3f]",
   SHIPPED: "bg-[#c9b5a0] text-[#2d2d2d]",
   DELIVERED: "bg-[#11bf31] text-white",
+  PAID: "bg-[#11bf31] text-white",
 };
 
 export default function SellerDashboard() {
@@ -28,6 +24,7 @@ export default function SellerDashboard() {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editProduct, setEditProduct] = useState(null);
 
   useEffect(() => {
     if (!user || user.role !== "SELLER") {
@@ -46,6 +43,7 @@ export default function SellerDashboard() {
     ]);
     setProducts(p.data);
     setOrders(o.data);
+    console.log(o.data);
     setLoading(false);
   };
 
@@ -60,10 +58,7 @@ export default function SellerDashboard() {
     loadData();
   };
 
-  const totalRevenue = orders.reduce(
-    (sum, o) => sum + o.totalAmount,
-    0
-  );
+  const totalRevenue = orders.reduce((sum, o) => sum + o.totalAmount, 0);
 
   if (loading) {
     return (
@@ -108,6 +103,14 @@ export default function SellerDashboard() {
         </div>
 
         {/* MAIN GRID */}
+        {editProduct && (
+          <EditProductModal
+            product={editProduct}
+            onClose={() => setEditProduct(null)}
+            onUpdated={loadData}
+          />
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* PRODUCTS */}
           <section>
@@ -138,16 +141,17 @@ export default function SellerDashboard() {
                   />
 
                   <div className="flex-1">
-                    <h3 className="font-semibold text-[#2d2d2d]">
-                      {p.name}
-                    </h3>
+                    <h3 className="font-semibold text-[#2d2d2d]">{p.name}</h3>
                     <p className="text-sm text-[#6b6b6b]">
                       ₹{p.price} • {t("seller.stock")} {p.stock}
                     </p>
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <button className="border px-3 py-1 rounded-lg text-sm">
+                    <button
+                      onClick={() => setEditProduct(p)}
+                      className="border px-3 py-1 rounded-lg text-sm hover:bg-[#f5f1ed]"
+                    >
                       {t("common.edit")}
                     </button>
 
@@ -165,13 +169,9 @@ export default function SellerDashboard() {
 
           {/* ORDERS */}
           <section>
-            <h2 className="text-xl font-semibold mb-4">
-              {t("seller.orders")}
-            </h2>
+            <h2 className="text-xl font-semibold mb-4">{t("seller.orders")}</h2>
 
-            {orders.length === 0 && (
-              <EmptyState text={t("seller.noOrders")} />
-            )}
+            {orders.length === 0 && <EmptyState text={t("seller.noOrders")} />}
 
             <div className="space-y-6">
               {orders.map((order) => (
@@ -187,32 +187,40 @@ export default function SellerDashboard() {
                     <select
                       value={order.status}
                       onChange={(e) =>
-                        handleStatusChange(
-                          order._id,
-                          e.target.value
-                        )
+                        handleStatusChange(order._id, e.target.value)
                       }
-                      className={`px-3 py-1 rounded-full text-sm ${statusColors[order.status]}`}
+                      className={`px-3 py-1 rounded-full text-sm ${
+                        statusColors[order.status]
+                      }`}
                     >
                       <option value="PLACED">{t("order.placed")}</option>
+                      <option value="PAID">{t("order.paid")}</option>
                       <option value="SHIPPED">{t("order.shipped")}</option>
                       <option value="CANCELLED">{t("order.cancelled")}</option>
                       <option value="DELIVERED">{t("order.delivered")}</option>
                     </select>
                   </div>
 
+                  {/* ✅ DELIVERY ADDRESS */}
+                  {order.address && (
+                    <div className="mb-4 text-sm bg-[#f5f1ed] border border-[#e0d6cb] rounded-xl p-3">
+                      <p className="font-medium text-[#2d2d2d] mb-1">
+                        {t("orders.deliveryAddress")}
+                      </p>
+                      <p className="text-[#6b6b6b]">
+                        {order.address.street}, {order.address.city},{" "}
+                        {order.address.state} – {order.address.pincode}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="space-y-2 text-sm">
                     {order.items.map((item) => (
-                      <div
-                        key={item._id}
-                        className="flex justify-between"
-                      >
+                      <div key={item._id} className="flex justify-between">
                         <span>
                           {item.name} × {item.quantity}
                         </span>
-                        <span>
-                          ₹{item.price * item.quantity}
-                        </span>
+                        <span>₹{item.price * item.quantity}</span>
                       </div>
                     ))}
                   </div>
@@ -226,7 +234,7 @@ export default function SellerDashboard() {
           </section>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
@@ -236,9 +244,7 @@ export default function SellerDashboard() {
 const Stat = ({ title, value }) => (
   <div className="bg-[#e8dfd7] rounded-2xl p-6">
     <p className="text-sm text-[#6b6b6b]">{title}</p>
-    <p className="text-2xl font-bold text-[#2d2d2d] mt-1">
-      {value}
-    </p>
+    <p className="text-2xl font-bold text-[#2d2d2d] mt-1">{value}</p>
   </div>
 );
 

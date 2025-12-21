@@ -16,6 +16,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import SellerRoute from "./auth/SellerRoute";
 import UserOrders from "./pages/UserOrders";
 import Search from "./pages/Search";
+import Profile from "./pages/Profile";
 
 const routes = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
   /* ---------- AUTH ---------- */
   {

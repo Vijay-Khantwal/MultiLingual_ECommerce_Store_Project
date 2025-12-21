@@ -3,10 +3,11 @@ import {
   addReview,
   getProductReviews
 } from "../controllers/ReviewController.js";
+import { protect } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.post("/", addReview);
+router.post("/",protect, addReview);
 
 router.get("/product/:productId", getProductReviews);
 

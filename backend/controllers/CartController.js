@@ -5,28 +5,30 @@ export const addToCart = async (req, res) => {
   const userId = req.user.userId;
 
   let cart = await Cart.findOne({ userId });
-
   if (!cart) {
     cart = await Cart.create({
       userId,
-      items: [{ productId, quantity }]
+      items: [{ productId, quantity }],
     });
     return res.json(cart);
   }
 
-  const itemIndex = cart.items.findIndex(
-    item => item.productId.toString() === productId
+  const exists = cart.items.some(
+    (item) => item.productId.toString() === productId
   );
 
-  if (itemIndex > -1) {
-    cart.items[itemIndex].quantity += quantity;
-  } else {
-    cart.items.push({ productId, quantity });
+  if (exists) {
+    return res.status(400).json({
+      message: "Product exists in cart",
+    });
   }
 
+  cart.items.push({ productId, quantity });
   await cart.save();
+
   res.json(cart);
 };
+
 
 export const getCart = async (req, res) => {
   const { lang = "english" } = req.query;
@@ -71,15 +73,25 @@ export const getCart = async (req, res) => {
 };
 
 export const updateCartItem = async (req, res) => {
-  console.log("Update Cart Item called");
   const { itemId, quantity } = req.body;
   const userId = req.user.userId;
 
-  const cart = await Cart.findOne({ userId });
+  const cart = await Cart.findOne({ userId }).populate("items.productId");
   if (!cart) return res.status(404).json({ message: "Cart not found" });
+
   const item = cart.items.id(itemId);
-  // console.log("Updating item:", itemId, "to quantity:", quantity);
   if (!item) return res.status(404).json({ message: "Item not found" });
+
+  const product = item.productId;
+  if (!product) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+
+  if (quantity > product.stock) {
+    return res.status(400).json({
+      message: `Only ${product.stock} items available in stock`,
+    });
+  }
 
   item.quantity = quantity;
   await cart.save();

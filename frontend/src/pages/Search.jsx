@@ -18,6 +18,7 @@ export default function Search() {
   const [query, setQuery] = useState(params.get("q") || "");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [inStock, setInStock] = useState(false);
 
   const [sort, setSort] = useState("relevance");
   const [minPrice, setMinPrice] = useState("");
@@ -49,6 +50,7 @@ export default function Search() {
         lang,
         category,
         sort,
+        inStock,
       });
 
       const items = Array.isArray(data) ? data : [];
@@ -72,7 +74,7 @@ export default function Search() {
     }, 600);
 
     return () => clearTimeout(timer);
-  }, [query, sort, minPrice, maxPrice, category, lang]);
+  }, [query, sort, minPrice, maxPrice, category, lang, inStock]);
 
   useEffect(() => {
     if (page > 1) fetchProducts();
@@ -90,9 +92,7 @@ export default function Search() {
           <h1 className="text-3xl font-bold text-[#2d2d2d]">
             {t("search.title")}
           </h1>
-          <p className="text-sm text-[#6b6b6b] mt-1">
-            {t("search.subtitle")}
-          </p>
+          <p className="text-sm text-[#6b6b6b] mt-1">{t("search.subtitle")}</p>
         </div>
 
         {/* SEARCH BAR */}
@@ -146,6 +146,14 @@ export default function Search() {
             onChange={(e) => setMaxPrice(e.target.value)}
             className="border rounded-xl px-3 py-2"
           />
+          <label className="flex items-center gap-2 border rounded-xl px-3 py-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={inStock}
+              onChange={(e) => setInStock(e.target.checked)}
+            />
+            <span>{t("search.inStock")}</span>
+          </label>
 
           <button
             onClick={() => {
@@ -153,8 +161,10 @@ export default function Search() {
               setMaxPrice("");
               setSort("relevance");
               setCategory("");
+              setInStock(false);
             }}
-            className="border rounded-xl px-4 py-2 hover:bg-gray-50"
+            className="border border-[#c9b5a0] bg-[#e8dfd7] text-[#3d3d3d]  px-4 py-2  rounded-xl  transition  hover:bg-[#f5f1ed]  hover:text-[#2d2d2d]  active:bg-[#c9945c]  active:text-white
+  "
           >
             {t("search.resetFilters")}
           </button>

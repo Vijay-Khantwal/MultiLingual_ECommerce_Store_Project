@@ -7,12 +7,14 @@ import {
   searchProducts
 } from "../controllers/ProductController.js";
 import { protect, sellerOnly } from "../middleware/auth.js";
+import { mongoIdParamValidator } from "../middleware/validators.js";
+import { validate } from "../middleware/validate.js";
 
 const router = express.Router();
 
 router.post("/", protect ,sellerOnly,createProduct);
 router.get("/", getAllProducts);
 router.get("/search", searchProducts);
-router.get("/:id", getProductById);
-router.delete("/:id", protect, sellerOnly, deleteProduct);
+router.get("/:id", mongoIdParamValidator,validate,getProductById);
+router.delete("/:id", protect, sellerOnly,mongoIdParamValidator,validate, deleteProduct);
 export {router as productRouter};

@@ -37,6 +37,7 @@ export const getSellerOrders = async (req, res) => {
       userId: order.userId,
       totalAmount: order.totalAmount,
       status: order.status,
+      address: order.address,
       createdAt: order.createdAt,
 
       items: order.items
@@ -60,5 +61,44 @@ export const getSellerOrders = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Failed to fetch seller orders" });
+  }
+};
+
+export const updateProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { price, stock } = req.body;
+
+    if (price == null || stock == null) {
+      return res.status(400).json({ message: "Price and stock are required" });
+    }
+
+    if (price <= 0 || stock < 0) {
+      return res
+        .status(400)
+        .json({ message: "Price and stock must be greater than zero" });
+    }
+
+    const product = await Product.findOne({
+      _id: id,
+      sellerId: req.user.userId,
+    });
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    product.price = price;
+    product.stock = stock;
+    await product.save();
+
+    res.json({
+      message: "Product updated successfully",
+      price: product.price,
+      stock: product.stock,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to update product" });
   }
 };

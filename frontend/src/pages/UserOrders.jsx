@@ -65,6 +65,8 @@ export default function UserOrders() {
 const OrderCard = ({ order }) => {
   const { t } = useTranslation();
   const items = order.items || [];
+  const address = order.address;
+  console.log(order);
 
   return (
     <div className="border rounded-2xl p-6 bg-white shadow-sm hover:shadow-md transition">
@@ -86,6 +88,19 @@ const OrderCard = ({ order }) => {
           {t(`order.${order.status.toLowerCase()}`)}
         </span>
       </div>
+
+      {/* ✅ ADDRESS */}
+      {address && (
+        <div className="mb-4 text-sm text-gray-600 bg-gray-50 rounded-xl p-3">
+          <p className="font-medium text-gray-700 mb-1">
+            {t("orders.deliveryAddress")}
+          </p>
+          <p>
+            {address.street}, {address.city}, {address.state} –{" "}
+            {address.pincode}
+          </p>
+        </div>
+      )}
 
       {/* Items */}
       <div className="divide-y divide-gray-200">
@@ -119,7 +134,7 @@ const OrderCard = ({ order }) => {
               </div>
 
               <span className="font-medium text-gray-700">
-                ₹{(item.product?.price || 0) * item.quantity}
+                ₹{(item?.price || 0) * item.quantity}
               </span>
             </div>
           ))
@@ -135,6 +150,7 @@ const OrderCard = ({ order }) => {
     </div>
   );
 };
+
 
 const EmptyOrders = () => {
   const { t } = useTranslation();

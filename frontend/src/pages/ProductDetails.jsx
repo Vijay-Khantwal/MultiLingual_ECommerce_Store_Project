@@ -21,6 +21,8 @@ export default function ProductDetails() {
   const { t } = useTranslation();
 
   const isInCart = cartItems.some((item) => item.product._id === id);
+  const isOutOfStock = !product || product.stock <= 0;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -135,29 +137,36 @@ export default function ProductDetails() {
 
           <div className="flex gap-4">
             <button
+              disabled={isInCart || isOutOfStock}
               onClick={async () => {
+                if (isOutOfStock) return;
+
                 const success = await addToCart({
                   productId: id,
                   quantity: 1,
                   product,
                 });
 
-                if (!success) {
-                  navigate("/login");
-                }
+                if (!success) navigate("/login");
               }}
-              disabled={isInCart}
-              className={`flex-1 border-2 border-[#c9b5a0] text-[#3d3d3d] px-6 py-3 rounded-xl transition font-medium ${
-                isInCart
-                  ? "bg-[#c9b5c0]/20 cursor-not-allowed"
-                  : "hover:bg-[#e8dfd7]"
+              className={`flex-1 border-2 border-[#c9b5a0] px-6 py-3 rounded-xl transition font-medium ${
+                isInCart || isOutOfStock
+                  ? "bg-[#c9b5c0]/20 cursor-not-allowed text-[#8a8a8a]"
+                  : "hover:bg-[#e8dfd7] text-[#3d3d3d]"
               }`}
             >
-              {isInCart ? t("cart.added") : t("cart.add")}
+              {isOutOfStock
+                ? t("product.outOfStock")
+                : isInCart
+                ? t("cart.added")
+                : t("cart.add")}
             </button>
 
             <button
+              disabled={isOutOfStock}
               onClick={async () => {
+                if (isOutOfStock) return;
+
                 const success = await addToCart({
                   productId: id,
                   quantity: 1,
@@ -168,11 +177,16 @@ export default function ProductDetails() {
                   navigate("/login");
                   return;
                 }
+
                 navigate("/cart");
               }}
-              className="flex-1 bg-[#c9945c] text-white px-6 py-3 rounded-xl hover:bg-[#b88650] transition font-medium"
+              className={`flex-1 px-6 py-3 rounded-xl transition font-medium ${
+                isOutOfStock
+                  ? "bg-[#c9b5c0]/30 cursor-not-allowed text-[#8a8a8a]"
+                  : "bg-[#c9945c] text-white hover:bg-[#b88650]"
+              }`}
             >
-              {t("cart.buyNow")}
+              {isOutOfStock ? t("product.outOfStock") : t("cart.buyNow")}
             </button>
           </div>
         </div>

@@ -8,14 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [lang, setLang] = useState(""); // keep as-is
   const [loading, setLoading] = useState(true);
+
+  /* ---------- i18n sync ---------- */
   useEffect(() => {
-  if (!lang) return;
+    if (!lang) return;
 
-  const i18nLang = LANG_MAP[lang] || "en";
-  i18n.changeLanguage(i18nLang);
-}, [lang]);
+    const i18nLang = LANG_MAP[lang] || "en";
+    i18n.changeLanguage(i18nLang);
+  }, [lang]);
 
-
+  /* ---------- hydrate from localStorage ---------- */
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const storedLang = localStorage.getItem("lang") || "english";
@@ -26,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  /* ---------- auth actions ---------- */
   const login = (data) => {
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
@@ -43,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     setLang("english");
   };
 
-  // 🔒 ONLY change i18n when USER explicitly changes language
+  /* ---------- language ---------- */
   const changeLanguage = (newLang) => {
     setLang(newLang);
     localStorage.setItem("lang", newLang);
@@ -52,9 +55,23 @@ export const AuthProvider = ({ children }) => {
     i18n.changeLanguage(i18nLang);
   };
 
+  /* ---------- ✅ NEW: safe user updater ---------- */
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, lang, changeLanguage, loading, login, logout }}
+      value={{
+        user,
+        lang,
+        loading,
+        login,
+        logout,
+        changeLanguage,
+        updateUser, // ✅ exposed here
+      }}
     >
       {children}
     </AuthContext.Provider>

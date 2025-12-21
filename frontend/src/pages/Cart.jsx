@@ -8,6 +8,7 @@ import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
+import PaymentPopup from "../components/PaymentPopup";
 
 export default function Cart() {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ export default function Cart() {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const navigate = useNavigate();
   const { lang } = useAuth();
+  const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
@@ -26,14 +28,22 @@ export default function Cart() {
     fetch();
   }, [lang]);
 
-  const changeQty = async (productId, qty) => {
+  const changeQty = async (itemId, qty) => {
     if (qty < 1) return;
 
-    const item = cartItems.find((i) => i._id === productId);
+    const item = cartItems.find((i) => i._id === itemId);
     if (!item) return;
 
+    const availableStock = item.product?.stock ?? 0;
+
+    // 🔴 HARD LIMIT
+    if (qty > availableStock) {
+      toast.error(t("cart.errors.stockLimit", { stock: availableStock }));
+      return;
+    }
+
     try {
-      await updateCartItem(productId, qty);
+      await updateCartItem(itemId, qty);
       await loadCart();
     } catch {
       toast.error(t("cart.errors.updateQty"));
@@ -111,35 +121,35 @@ export default function Cart() {
               </h2>
 
               <div className="space-y-3 text-sm">
-                <SummaryRow
-                  label={t("cart.subtotal")}
-                  value={`₹${total}`}
-                />
-                <SummaryRow
-                  label={t("cart.shipping")}
-                  value={t("cart.free")}
-                />
-                <SummaryRow
-                  label={t("cart.total")}
-                  value={`₹${total}`}
-                  bold
-                />
+                <SummaryRow label={t("cart.subtotal")} value={`₹${total}`} />
+                <SummaryRow label={t("cart.shipping")} value={t("cart.free")} />
+                <SummaryRow label={t("cart.total")} value={`₹${total}`} bold />
               </div>
 
               <button
                 disabled={checkoutLoading}
-                onClick={checkout}
+                onClick={() => setShowPayment(true)}
                 className="w-full mt-6 bg-[#c9945c] hover:bg-[#b88650] text-white py-3 rounded-2xl font-medium"
               >
-                {checkoutLoading
-                  ? t("cart.placingOrder")
-                  : t("cart.checkout")}
+                {t("cart.checkout")}
               </button>
             </div>
           </div>
         )}
       </div>
-      <Footer/>
+      {showPayment && (
+        <PaymentPopup
+          total={total}
+          onClose={() => setShowPayment(false)}
+          onSuccess={() => {
+            setShowPayment(false);
+            loadCart();
+            navigate("/orders");
+          }}
+        />
+      )}
+
+      <Footer />
     </>
   );
 }
@@ -166,9 +176,7 @@ const CartItem = ({ item, onQtyChange, onRemove }) => {
           {product.name || t("cart.deletedProduct")}
         </h3>
 
-        <p className="text-sm text-[#6b6b6b] mt-1">
-          ₹{product.price || 0}
-        </p>
+        <p className="text-sm text-[#6b6b6b] mt-1">₹{product.price || 0}</p>
 
         <div className="flex items-center gap-3 mt-3">
           <button
@@ -182,7 +190,10 @@ const CartItem = ({ item, onQtyChange, onRemove }) => {
 
           <button
             onClick={() => onQtyChange(item._id, quantity + 1)}
-            className="w-8 h-8 border rounded-full"
+            disabled={quantity >= product.stock}
+            className={`w-8 h-8 border rounded-full ${
+              quantity >= product.stock ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             +
           </button>

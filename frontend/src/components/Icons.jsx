@@ -178,39 +178,53 @@ export const SecurePaymentIcon = ({ size = 20 }) => (
     height={size}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 1l9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4zm0 2.18L5 6v5c0 4.52 2.98 8.79 7 9.96 4.02-1.17 7-5.44 7-9.96V6l-7-2.82z"/>
-    <path d="M10.5 11.5l-1.5-1.5-1.5 1.5 3 3 6-6-1.5-1.5z"/>
+    <path d="M12 1l9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4zm0 2.18L5 6v5c0 4.52 2.98 8.79 7 9.96 4.02-1.17 7-5.44 7-9.96V6l-7-2.82z" />
+    <path d="M10.5 11.5l-1.5-1.5-1.5 1.5 3 3 6-6-1.5-1.5z" />
   </svg>
 );
-
 
 export const VerifiedSellerIcon = ({ size = 20 }) => (
   <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
     width={size}
     height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 2l2.09 4.26L18.8 7l-3.4 3.31.8 4.69L12 13.77 7.8 15l.8-4.69L5.2 7l4.71-.74L12 2z"/>
-    <path d="M10.5 11.5l-1.5-1.5-1.5 1.5 3 3 6-6-1.5-1.5z"/>
+    {/* Badge / Shield */}
+    <path d="M12 2l7 3v6c0 5-3.5 9.4-7 11-3.5-1.6-7-6-7-11V5l7-3z" />
+
+    {/* Check mark */}
+    <path
+      d="M9.5 12.5l2 2 4-4"
+      fill="none"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
-
 
 export const FastDeliveryIcon = ({ size = 20 }) => (
   <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
     width={size}
     height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M3 3h13v10h-1a3 3 0 0 0-6 0H7a3 3 0 0 0-6 0H0V5a2 2 0 0 1 2-2zm15 6h3.5L20 6h-2v3z"/>
-    <path d="M6 18a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm9 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+    {/* Truck body */}
+    <path d="M3 4h11v7h3.5l2.5 3v3h-1.5a2.5 2.5 0 0 0-5 0h-5a2.5 2.5 0 0 0-5 0H3V4z" />
+
+    {/* Front cabin */}
+    <path d="M14 7h3l2 2h-5V7z" />
+
+    {/* Wheels */}
+    <circle cx="6" cy="18" r="2" />
+    <circle cx="16" cy="18" r="2" />
   </svg>
 );
-
 
 export const EasyReturnIcon = ({ size = 20 }) => (
   <svg
@@ -220,7 +234,7 @@ export const EasyReturnIcon = ({ size = 20 }) => (
     height={size}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6a6 6 0 0 1-6 6 6 6 0 0 1-5.65-4H4.26A8 8 0 0 0 12 21a8 8 0 0 0 0-16z"/>
+    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6a6 6 0 0 1-6 6 6 6 0 0 1-5.65-4H4.26A8 8 0 0 0 12 21a8 8 0 0 0 0-16z" />
   </svg>
 );
 
@@ -232,10 +246,8 @@ export const CartIcon = ({ size = 20 }) => (
     height={size}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
-    <path d="M6.2 6h13.45a1 1 0 0 1 .98 1.2l-1.5 7A1 1 0 0 1 18.16 15H8.1a1 1 0 0 1-.98-.8L5.1 4H2V2h3a1 1 0 0 1 .98.8L6.2 6z"/>
+    <path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+    <path d="M6.2 6h13.45a1 1 0 0 1 .98 1.2l-1.5 7A1 1 0 0 1 18.16 15H8.1a1 1 0 0 1-.98-.8L5.1 4H2V2h3a1 1 0 0 1 .98.8L6.2 6z" />
   </svg>
 );
-
-
 

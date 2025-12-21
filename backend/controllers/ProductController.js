@@ -46,22 +46,19 @@ export const createProduct = async (req, res) => {
 
 export const getAllProducts = async (req, res) => {
   try {
-    const {
-      lang = "english",
-      sort = "latest",
-      category,
-    } = req.query;
+    const { lang = "english", sort = "latest", category, inStock } = req.query;
 
-    // console.log("Fetching products:", { lang, sort, category });
-
-    /* ---------------- FILTER ---------------- */
     const filter = { isActive: true };
 
     if (category) {
       filter.categoryId = category;
     }
 
-    let sortQuery = { createdAt: -1 }; // default: latest
+    if (inStock === "true") {
+      filter.stock = { $gt: 0 };
+    }
+
+    let sortQuery = { createdAt: -1 };
 
     if (sort === "price_high") {
       sortQuery = { price: -1 };
@@ -69,14 +66,10 @@ export const getAllProducts = async (req, res) => {
       sortQuery = { price: 1 };
     }
 
-    const products = await Product.find(filter)
-      .sort(sortQuery)
-      .lean();
+    const products = await Product.find(filter).sort(sortQuery).lean();
 
     const response = products.map((p) => {
-      const t = p.translations?.find(
-        (tr) => tr.lang === lang
-      );
+      const t = p.translations?.find((tr) => tr.lang === lang);
 
       return {
         _id: p._id,
@@ -95,7 +88,6 @@ export const getAllProducts = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch products" });
   }
 };
-
 
 export const getProductById = async (req, res) => {
   const { lang = "english" } = req.query;
@@ -134,6 +126,7 @@ export const deleteProduct = async (req, res) => {
 
   res.json({ message: "Product deleted successfully" });
 };
+
 export const searchProducts = async (req, res) => {
   try {
     const {
@@ -145,13 +138,14 @@ export const searchProducts = async (req, res) => {
       page = 1,
       limit = 9,
       sort,
+      inStock,
     } = req.query;
-    console.log(req.query);
 
     const pageNum = Number(page);
     const limitNum = Number(limit);
     const min = minPrice === "" ? 0 : Number(minPrice);
     const max = maxPrice === "" ? Number.MAX_SAFE_INTEGER : Number(maxPrice);
+
     const sortStage =
       sort === "price_asc"
         ? { price: 1 }
@@ -165,10 +159,13 @@ export const searchProducts = async (req, res) => {
       {
         $match: {
           isActive: true,
+          price: { $gte: min, $lte: max },
           ...(category && {
             categoryId: new mongoose.Types.ObjectId(category),
           }),
-          price: { $gte: min, $lte: max },
+          ...(inStock === "true" && {
+            stock: { $gt: 0 },
+          }),
         },
       },
       {
@@ -215,7 +212,6 @@ export const searchProducts = async (req, res) => {
           matchedTranslation: { $ne: null },
         },
       },
-
       ...(sortStage ? [{ $sort: sortStage }] : []),
       {
         $project: {

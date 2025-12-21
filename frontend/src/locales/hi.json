@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "सदाबहार उत्पादों की खोज करें",
-    "subtitle": "चुनिंदा संग्रह • भरोसेमंद विक्रेता • सर्वोत्तम दाम",
+    "subtitle": "चुनिंदा संग्रह • विश्वसनीय विक्रेता • सर्वोत्तम मूल्य",
     "searchPlaceholder": "स्थानीय उत्पाद खोजें...",
     "search": "खोजें",
     "shopNow": "अभी खरीदें"
@@ -13,171 +13,33 @@
     },
     "verified": {
       "title": "सत्यापित विक्रेता",
-      "desc": "केवल भरोसेमंद और स्वीकृत विक्रेता"
+      "desc": "केवल विश्वसनीय और स्वीकृत विक्रेता"
     },
     "fast": {
-      "title": "तेज़ डिलीवरी",
-      "desc": "देश भर में घर तक तेज़ डिलीवरी"
+      "title": "तेजी से वितरण",
+      "desc": "देश भर में त्वरित डोरस्टेप डिलीवरी"
     },
     "returns": {
       "title": "आसान वापसी",
-      "desc": "बिना परेशानी के रिटर्न और रिफंड"
+      "desc": "परेशानी मुक्त वापसी और धनवापसी"
     }
   },
   "sections": {
-    "browse": "श्रेणियां देखें",
-    "featured": "खास उत्पाद",
+    "browse": "श्रेणियां ब्राउज़ करें",
+    "featured": "चुनिंदा उत्पाद",
     "stayUpdated": "अपडेट रहें"
   },
   "category": {
     "all": "सभी"
   },
-  "addProduct": {
-    "title": "नया उत्पाद जोड़ें",
-    "subtitle": "मार्केटप्लेस पर अपना उत्पाद सूचीबद्ध करें",
-    "basicInfo": "बुनियादी जानकारी",
-    "productName": "उत्पाद का नाम *",
-    "description": "विवरण",
-    "originalLanguage": "मूल भाषा",
-    "category": "श्रेणी *",
-    "pricingInventory": "मूल्य निर्धारण और इन्वेंटरी",
-    "price": "दाम (₹) *",
-    "stock": "स्टॉक *",
-    "images": "उत्पाद की तस्वीरें",
-    "imagePlaceholder": "https://example.com/image.jpg",
-    "addImage": "+ एक और तस्वीर जोड़ें",
-    "visibility": "दृश्यता",
-    "visible": "उत्पाद सक्रिय है और दिखाई दे रहा है",
-    "submit": "उत्पाद जोड़ें",
-    "saving": "सहेजा जा रहा है...",
-    "loading": "उत्पाद जोड़ा जा रहा है...",
-    "success": "उत्पाद सफलतापूर्वक जोड़ा गया",
-    "errors": {
-      "required": "कृपया सभी आवश्यक फ़ील्ड भरें",
-      "failed": "उत्पाद जोड़ने में विफल"
-    }
-  },
-  "sort": {
-    "default": "क्रमबद्ध करें",
-    "lowHigh": "दाम: कम से ज्यादा",
-    "highLow": "दाम: ज्यादा से कम",
-    "newest": "नवीनतम"
-  },
-  "newsletter": {
-    "desc": "सीधे अपने इनबॉक्स में ऑफ़र, नए आगमन और डील पाएं",
-    "placeholder": "अपना ईमेल दर्ज करें",
-    "subscribe": "सब्सक्राइब करें"
-  },
-  "errors": {
-    "fetchProducts": "उत्पाद लोड करने में विफल",
-    "fetchOrders": "ऑर्डर लोड करने में विफल"
-  },
-  "product": {
-    "inStock": "उपलब्ध है",
-    "outOfStock": "स्टॉक खत्म",
-    "category": "श्रेणी",
-    "seller": "विक्रेता",
-    "verifiedSeller": "सत्यापित विक्रेता"
-  },
-  "cart": {
-    "add": "कार्ट में डालें",
-    "added": "कार्ट में जोड़ा गया",
-    "buyNow": "अभी खरीदें",
-    "title": "शॉपिंग कार्ट",
-    "summary": "ऑर्डर का विवरण",
-    "subtotal": "उप-योग",
-    "shipping": "शिपिंग",
-    "free": "मुफ़्त",
-    "total": "कुल योग",
-    "checkout": "चेकआउट",
-    "placingOrder": "ऑर्डर किया जा रहा है...",
-    "loading": "कार्ट लोड हो रहा है...",
-    "empty": "आपकी कार्ट खाली है",
-    "continueShopping": "खरीदारी जारी रखें",
-    "remove": "हटाएं",
-    "itemRemoved": "आइटम हटाया गया",
-    "orderPlaced": "ऑर्डर सफलतापूर्वक कर दिया गया",
-    "deletedProduct": "हटाया गया उत्पाद",
-    "errors": {
-      "updateQty": "मात्रा अपडेट करने में विफल",
-      "removeItem": "आइटम हटाने में विफल",
-      "checkout": "चेकआउट विफल"
-    }
-  },
-  "navbar": {
-    "shop": "शॉप",
-    "login": "लॉगिन",
-    "signUp": "साइन अप",
-    "logout": "लॉगआउट",
-    "profile": "प्रोफाइल",
-    "orders": "ऑर्डर",
-    "dashboard": "डैशबोर्ड"
-  },
-  "reviews": {
-    "title": "ग्राहकों की समीक्षाएं",
-    "write": "समीक्षा लिखें",
-    "submit": "समीक्षा जमा करें",
-    "placeholder": "अपना अनुभव साझा करें...",
-    "reviews": "समीक्षाएं"
-  },
-  "common": {
-    "loading": "लोड हो रहा है...",
-    "loadMore": "और देखें",
-    "edit": "संपादित करें",
-    "delete": "हटाएं",
-    "cancel": "रद्द करें"
-  },
-  "seller": {
-    "dashboard": "विक्रेता डैशबोर्ड",
-    "welcome": "स्वागत है, {{name}}",
-    "addProduct": "उत्पाद जोड़ें",
-    "totalProducts": "कुल उत्पाद",
-    "totalOrders": "कुल ऑर्डर",
-    "revenue": "कमाई",
-    "yourProducts": "आपके उत्पाद",
-    "orders": "ऑर्डर",
-    "noProducts": "अभी तक कोई उत्पाद नहीं जोड़ा गया",
-    "addFirstProduct": "अपना पहला उत्पाद जोड़ें",
-    "noOrders": "कोई ऑर्डर नहीं है",
-    "confirmDelete": "क्या आप इस उत्पाद को स्थायी रूप से हटाना चाहते हैं?",
-    "stock": "स्टॉक"
-  },
-  "order": {
-    "order": "ऑर्डर",
-    "placed": "ऑर्डर किया गया",
-    "shipped": "भेजा गया",
-    "cancelled": "रद्द किया गया",
-    "delivered": "डिलीवर हुआ",
-    "total": "कुल योग"
-  },
-  "search": {
-    "title": "उत्पाद खोजें",
-    "subtitle": "नाम, दाम या श्रेणी के अनुसार उत्पाद खोजें",
-    "placeholder": "उत्पाद खोजें...",
-    "allCategories": "सभी श्रेणियां",
-    "relevance": "प्रासंगिकता",
-    "minPrice": "न्यूनतम दाम",
-    "maxPrice": "अधिकतम दाम",
-    "resetFilters": "फ़िल्टर हटाएं",
-    "noResults": "कोई उत्पाद नहीं मिला",
-    "tryAgain": "कीवर्ड या फ़िल्टर बदलने का प्रयास करें"
-  },
-  "orders": {
-    "myOrders": "मेरे ऑर्डर",
-    "emptyTitle": "अभी तक कोई ऑर्डर नहीं",
-    "emptySubtitle": "खरीदारी शुरू करें और आपके ऑर्डर यहां दिखाई देंगे।",
-    "noItems": "कोई आइटम नहीं मिला",
-    "qty": "मात्रा",
-    "deletedProduct": "हटाया गया उत्पाद"
-  },
   "footer": {
     "companyTitle": "हमारी कंपनी",
     "companyDesc": "प्यार और गुणवत्ता के साथ चुने गए सदाबहार उत्पादों की खोज करें।",
-    "shopTitle": "शॉप",
+    "shopTitle": "दुकान",
     "shop": {
       "home": "होम",
       "marketplace": "मार्केटप्लेस",
-      "featured": "खास उत्पाद",
+      "featured": "चुनिंदा उत्पाद",
       "categories": "श्रेणियां"
     },
     "supportTitle": "सहायता",
@@ -188,28 +50,229 @@
       "shipping": "शिपिंग जानकारी"
     },
     "newsletterTitle": "न्यूज़लेटर",
-    "newsletterDesc": "सीधे अपने इनबॉक्स में ऑफ़र, नए आगमन और डील पाएं।",
+    "newsletterDesc": "ऑफ़र, नए आगमन और सौदे सीधे अपने इनबॉक्स में प्राप्त करें।",
     "newsletterPlaceholder": "अपना ईमेल दर्ज करें",
-    "subscribe": "सब्सक्राइब करें",
+    "subscribe": "सदस्यता लें",
     "rights": "सर्वाधिकार सुरक्षित।"
   },
+  "addProduct": {
+    "title": "उत्पाद जोड़ें",
+    "subtitle": "अपने कैटलॉग में नया उत्पाद जोड़ें",
+    "basicInfo": "बुनियादी जानकारी",
+    "productName": "उत्पाद का नाम",
+    "description": "विवरण",
+    "originalLanguage": "मूल भाषा",
+    "category": "श्रेणी",
+    "pricingInventory": "मूल्य निर्धारण और इन्वेंट्री",
+    "price": "कीमत",
+    "stock": "स्टॉक",
+    "images": "छवियां",
+    "imagePlaceholder": "छवि URL दर्ज करें",
+    "addImage": "एक और छवि जोड़ें",
+    "visibility": "दृश्यता",
+    "visible": "उत्पाद सक्रिय और दृश्यमान है",
+    "submit": "उत्पाद सहेजें",
+    "saving": "सहेजा जा रहा है...",
+    "loading": "प्रसंस्करण...",
+    "success": "उत्पाद सफलतापूर्वक जोड़ा गया!",
+    "errors": {
+      "required": "कृपया सभी आवश्यक फ़ील्ड भरें।",
+      "nameRequired": "उत्पाद का नाम आवश्यक है।",
+      "invalidPrice": "कीमत 0 से अधिक एक वैध संख्या होनी चाहिए।",
+      "invalidStock": "स्टॉक एक वैध संख्या होनी चाहिए।",
+      "categoryRequired": "श्रेणी आवश्यक है।",
+      "imagesRequired": "कृपया कम से कम एक छवि जोड़ें।",
+      "failed": "उत्पाद जोड़ने में विफल।"
+    }
+  },
+  "sort": {
+    "default": "क्रमबद्ध करें",
+    "lowHigh": "कीमत: कम से उच्च",
+    "highLow": "कीमत: उच्च से कम",
+    "newest": "नवीनतम"
+  },
+  "newsletter": {
+    "desc": "सीधे अपने इनबॉक्स में ऑफ़र और सौदे प्राप्त करें",
+    "placeholder": "अपना ईमेल दर्ज करें",
+    "subscribe": "सदस्यता लें"
+  },
+  "errors": {
+    "fetchProducts": "उत्पाद प्राप्त करने में विफल",
+    "fetchOrders": "ऑर्डर लोड करने में विफल",
+    "invalidPriceStock": "कीमत शून्य से अधिक होनी चाहिए और स्टॉक नकारात्मक नहीं हो सकता",
+    "updateFailed": "उत्पाद अपडेट करने में विफल। कृपया पुन: प्रयास करें।"
+  },
+  "product": {
+    "inStock": "स्टॉक में है",
+    "outOfStock": "स्टॉक में नहीं है",
+    "category": "श्रेणी",
+    "seller": "विक्रेता",
+    "verifiedSeller": "सत्यापित विक्रेता"
+  },
+  "cart": {
+    "loginRequired": "कार्ट में सामान जोड़ने के लिए कृपया लॉगिन करें",
+    "sessionExpired": "सत्र समाप्त हो गया। कृपया फिर से लॉगिन करें",
+    "add": "कार्ट में जोड़ें",
+    "added": "कार्ट में जोड़ा गया",
+    "buyNow": "अभी खरीदें",
+    "title": "शॉपिंग कार्ट",
+    "summary": "ऑर्डर सारांश",
+    "subtotal": "उप-योग",
+    "shipping": "शिपिंग",
+    "free": "मुफ्त",
+    "total": "कुल",
+    "checkout": "चेकआउट",
+    "placingOrder": "ऑर्डर दिया जा रहा है...",
+    "loading": "आपका कार्ट लोड हो रहा है...",
+    "empty": "आपका कार्ट खाली है",
+    "continueShopping": "खरीदारी जारी रखें",
+    "remove": "हटाएं",
+    "itemRemoved": "आइटम हटा दिया गया",
+    "orderPlaced": "ऑर्डर सफलतापूर्वक दिया गया",
+    "deletedProduct": "हटाया गया उत्पाद",
+    "errors": {
+      "updateQty": "मात्रा अपडेट करने में विफल",
+      "removeItem": "आइटम हटाने में विफल",
+      "checkout": "चेकआउट विफल रहा",
+      "addFailed": "कार्ट में आइटम जोड़ने में विफल"
+    }
+  },
+  "navbar": {
+    "shop": "दुकान",
+    "login": "लॉगिन",
+    "signUp": "साइन अप",
+    "logout": "लॉगआउट",
+    "profile": "प्रोफ़ाइल",
+    "orders": "ऑर्डर",
+    "dashboard": "डैशबोर्ड"
+  },
+  "reviews": {
+    "title": "ग्राहक समीक्षाएं",
+    "write": "समीक्षा लिखें",
+    "submit": "समीक्षा जमा करें",
+    "placeholder": "अपना अनुभव साझा करें...",
+    "reviews": "समीक्षाएं"
+  },
+  "common": {
+    "name": "उत्पाद का नाम",
+    "price": "कीमत",
+    "save": "सहेजें",
+    "loading": "लोड हो रहा है...",
+    "loadMore": "अधिक लोड करें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "cancel": "रद्द करें",
+    "somethingWentWrong": "कुछ गलत हो गया"
+  },
+  "seller": {
+    "editProduct": "उत्पाद संपादित करें",
+    "productUpdated": "उत्पाद सफलतापूर्वक अपडेट किया गया",
+    "dashboard": "विक्रेता डैशबोर्ड",
+    "welcome": "वापसी पर स्वागत है, {{name}}",
+    "addProduct": "उत्पाद जोड़ें",
+    "totalProducts": "कुल उत्पाद",
+    "totalOrders": "कुल ऑर्डर",
+    "revenue": "राजस्व",
+    "yourProducts": "आपके उत्पाद",
+    "orders": "ऑर्डर",
+    "noProducts": "अभी तक कोई उत्पाद नहीं जोड़ा गया",
+    "addFirstProduct": "अपना पहला उत्पाद जोड़ें",
+    "noOrders": "अभी तक कोई ऑर्डर नहीं",
+    "confirmDelete": "क्या इस उत्पाद को स्थायी रूप से हटा दें?",
+    "stock": "स्टॉक"
+  },
+  "order": {
+    "paid": "भुगतान किया गया",
+    "order": "ऑर्डर",
+    "placed": "दिया गया",
+    "shipped": "भेजा गया",
+    "cancelled": "रद्द",
+    "delivered": "वितरित",
+    "total": "कुल"
+  },
+  "search": {
+    "title": "उत्पाद खोजें",
+    "inStock": "केवल स्टॉक में",
+    "subtitle": "नाम, कीमत या श्रेणी के आधार पर उत्पाद खोजें",
+    "placeholder": "उत्पाद खोजें...",
+    "allCategories": "सभी श्रेणियां",
+    "relevance": "प्रासंगिकता",
+    "minPrice": "न्यूनतम कीमत",
+    "maxPrice": "अधिकतम कीमत",
+    "resetFilters": "फ़िल्टर रीसेट करें",
+    "noResults": "कोई उत्पाद नहीं मिला",
+    "tryAgain": "कीवर्ड या फ़िल्टर बदलने का प्रयास करें"
+  },
+  "orders": {
+    "myOrders": "मेरे ऑर्डर",
+    "emptyTitle": "अभी तक कोई ऑर्डर नहीं",
+    "emptySubtitle": "खरीदारी शुरू करें और आपके ऑर्डर यहां दिखाई देंगे।",
+    "noItems": "कोई आइटम नहीं मिला",
+    "qty": "मात्रा",
+    "deliveryAddress": "वितरण का पता",
+    "deletedProduct": "हटाया गया उत्पाद"
+  },
   "auth": {
-  "welcomeBack": "फिर से स्वागत है",
-  "loginSubtitle": "खरीदारी जारी रखने के लिए लॉगिन करें",
-  "login": "लॉगिन",
-  "loginSuccess": "फिर से स्वागत है!",
-  "loginFailed": "लॉगिन विफल रहा",
-  "createAccount": "खाता बनाएं",
-  "signupSubtitle": "कुछ ही सेकंड में हमारे मार्केटप्लेस से जुड़ें",
-  "signupSuccess": "खाता सफलतापूर्वक बनाया गया",
-  "signupFailed": "साइन अप विफल रहा",
-  "name": "नाम",
-  "email": "ईमेल",
-  "password": "पासवर्ड",
-  "accountType": "खाते का प्रकार",
-  "consumer": "ग्राहक",
-  "seller": "विक्रेता",
-  "noAccount": "यहाँ नए हैं?",
-  "alreadyAccount": "पहले से खाता है?"
-}
+    "createAccount": "खाता बनाएं",
+    "signupSubtitle": "शुरू करने के लिए साइन अप करें",
+    "login": "लॉगिन",
+    "welcomeBack": "वापसी पर स्वागत है",
+    "loginSubtitle": "अपने खाते तक पहुंचने के लिए क्रेडेंशियल दर्ज करें",
+    "noAccount": "खाता नहीं है?",
+    "alreadyAccount": "पहले से ही खाता है?",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "name": "नाम",
+    "accountType": "खाता प्रकार",
+    "consumer": "उपभोक्ता",
+    "seller": "विक्रेता",
+    "address": "पता",
+    "street": "गली/मोहल्ला",
+    "city": "शहर",
+    "state": "राज्य",
+    "country": "देश",
+    "pincode": "पिनकोड",
+    "signupSuccess": "खाता सफलतापूर्वक बनाया गया!",
+    "signupFailed": "खाता बनाने में विफल।",
+    "loginSuccess": "सफलतापूर्वक लॉगिन किया गया!",
+    "loginFailed": "लॉगिन विफल रहा।",
+    "nameRequired": "नाम आवश्यक है।",
+    "emailRequired": "ईमेल आवश्यक है।",
+    "invalidEmail": "अमान्य ईमेल प्रारूप।",
+    "passwordRequired": "पासवर्ड आवश्यक है।",
+    "addressRequired": "कृपया पते के सभी फ़ील्ड भरें।",
+    "invalidPincode": "अमान्य पिनकोड।",
+    "passwordTooShort": "पासवर्ड कम से कम 6 वर्णों का होना चाहिए।"
+  },
+  "profile": {
+    "title": "मेरी प्रोफ़ाइल",
+    "name": "पूरा नाम",
+    "update": "प्रोफ़ाइल अपडेट करें",
+    "street": "गली/मोहल्ला",
+    "city": "शहर",
+    "state": "राज्य",
+    "country": "देश",
+    "pincode": "पिनकोड",
+    "changePassword": "पासवर्ड बदलें",
+    "currentPassword": "वर्तमान पासवर्ड",
+    "newPassword": "नया पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "passwordTooShort": "पासवर्ड कम से कम 6 वर्णों का होना चाहिए।",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
+    "address": "कृपया पते के सभी फ़ील्ड पूरे करें।",
+    "invalidPincode": "पिनकोड 6 अंकों का होना चाहिए।",
+    "updated": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई!",
+    "updateFailed": "प्रोफ़ाइल अपडेट करने में विफल।"
+  },
+  "payment": {
+    "confirm": "भुगतान की पुष्टि करें",
+    "totalAmount": "कुल राशि",
+    "payNow": "अभी भुगतान करें",
+    "checkout": "कार्ट चेकआउट",
+    "success": "ऑर्डर सफलतापूर्वक दिया गया!",
+    "failed": "भुगतान विफल या रद्द हो गया",
+    "verifyFailed": "भुगतान सत्यापन विफल रहा",
+    "sdkNotLoaded": "Razorpay SDK लोड नहीं हुआ",
+    "initFailed": "भुगतान शुरू करने में असमर्थ। कृपया अपना पता जांचें।"
+  }
 }
