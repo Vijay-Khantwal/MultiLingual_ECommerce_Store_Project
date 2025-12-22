@@ -37,8 +37,16 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-[#f5f1ed] border-b border-[#d4cfc7]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-[#2d2d2d]">
-          MyStore
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-[#2d2d2d] font-semibold hover:opacity-80 transition"
+        >
+          <img
+            src="/cart.png"
+            alt="IndiKart Logo"
+            className="h-10 w-full object-contain rounded-md"
+          />
+          <span className="text-3xl tracking-tight">Indi<span className="text-[#c88339]">Kart</span></span>
         </Link>
 
         {/* Right Section */}

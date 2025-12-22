@@ -23,7 +23,7 @@ export default function PaymentPopup({ total, onClose, onSuccess }) {
         amount,
         currency: "INR",
         order_id: orderId,
-        name: "LocalLingo",
+        name: "IndiKart",
         description: t("payment.checkout"),
 
         // 2️⃣ SUCCESS ONLY
