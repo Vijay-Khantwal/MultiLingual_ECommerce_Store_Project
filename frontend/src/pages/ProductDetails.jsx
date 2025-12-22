@@ -130,7 +130,7 @@ export default function ProductDetails() {
             <div>
               <p className="text-sm text-[#6b6b6b]">{t("product.seller")}</p>
               <p className="font-medium text-[#3d3d3d]">
-                {product.sellerId?.name || t("product.verifiedSeller")}
+                {product.seller?.name || t("product.verifiedSeller")}
               </p>
             </div>
           </div>
