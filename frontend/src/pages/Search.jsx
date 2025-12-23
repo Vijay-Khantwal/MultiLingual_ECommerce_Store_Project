@@ -32,7 +32,7 @@ export default function Search() {
 
   /* ---------------- FETCH CATEGORIES ---------------- */
   useEffect(() => {
-    api.get("/categories").then((res) => setCategories(res.data));
+    api.get("/categories", { params: { lang } }).then((res) => setCategories(res.data));
   }, []);
 
   /* ---------------- FETCH PRODUCTS ---------------- */
@@ -115,7 +115,7 @@ export default function Search() {
             <option value="">{t("search.allCategories")}</option>
             {categories.map((c) => (
               <option key={c._id} value={c._id}>
-                {c.translations?.[0]?.name}
+                {c.name}
               </option>
             ))}
           </select>

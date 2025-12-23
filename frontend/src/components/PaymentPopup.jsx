@@ -26,7 +26,6 @@ export default function PaymentPopup({ total, onClose, onSuccess }) {
         name: "IndiKart",
         description: t("payment.checkout"),
 
-        // 2️⃣ SUCCESS ONLY
         handler: async (response) => {
           try {
             const verifyRes = await axios.post(
@@ -58,7 +57,6 @@ export default function PaymentPopup({ total, onClose, onSuccess }) {
       if (window.Razorpay) {
         const rzp = new window.Razorpay(options);
 
-        // 3️⃣ FAILED PAYMENT
         rzp.on("payment.failed", (response) => {
           console.error(response.error);
            toast.error(t("payment.failed"));

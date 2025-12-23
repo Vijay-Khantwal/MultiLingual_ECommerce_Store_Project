@@ -8,6 +8,8 @@ import { useAuth } from "../auth/AuthContext";
 import { useCart } from "../context/CartContext";
 import { useTranslation } from "react-i18next";
 import Navbar from "../components/Navbar";
+import toast from "react-hot-toast";
+import ReviewList from "../components/ReviewList";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -38,11 +40,23 @@ export default function ProductDetails() {
     : "0.0";
 
   const submitReview = async () => {
-    await addReview({ productId: id, rating, comment });
-    const res = await getReviews(id);
-    setReviews(res.data);
-    setComment("");
-    setRating(5);
+    try {
+      await addReview({
+        productId: id,
+        rating,
+        comment,
+      });
+
+      const res = await getReviews(id);
+      toast.success(t("reviews.submitted"));
+      setReviews(res.data);
+
+      setComment("");
+      setRating(5);
+    } catch (err) {
+      const msg = t("reviews.submitError");
+      toast.error(msg);
+    }
   };
 
   return (
@@ -235,31 +249,7 @@ export default function ProductDetails() {
           </button>
         </div>
 
-        {/* Review List */}
-        <div className="space-y-6">
-          {reviews.map((r) => (
-            <div key={r._id} className="bg-[#e8dfd7] p-5 rounded-2xl">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className={
-                        i < r.rating ? "text-[#d4a574]" : "text-[#d4cfc7]"
-                      }
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <span className="text-sm text-[#6b6b6b]">
-                  {new Date(r.createdAt).toLocaleDateString()}
-                </span>
-              </div>
-              <p className="text-[#3d3d3d]">{r.comment}</p>
-            </div>
-          ))}
-        </div>
+        <ReviewList reviews={reviews} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { body, param , query} from "express-validator";
+import { body, param, query } from "express-validator";
 
 export const createUserValidator = [
   body("name")
@@ -49,29 +49,19 @@ export const mongoIdParamValidator = [
 ];
 
 export const addToCartValidator = [
-  body("productId")
-    .isMongoId()
-    .withMessage("Invalid product id"),
+  body("productId").isMongoId().withMessage("Invalid product id"),
 
-  body("quantity")
-    .isInt({ min: 1 })
-    .withMessage("Quantity must be at least 1"),
+  body("quantity").isInt({ min: 1 }).withMessage("Quantity must be at least 1"),
 ];
 
 export const updateCartItemValidator = [
-  body("itemId")
-    .isMongoId()
-    .withMessage("Invalid cart item id"),
+  body("itemId").isMongoId().withMessage("Invalid cart item id"),
 
-  body("quantity")
-    .isInt({ min: 1 })
-    .withMessage("Quantity must be at least 1"),
+  body("quantity").isInt({ min: 1 }).withMessage("Quantity must be at least 1"),
 ];
 
 export const removeFromCartValidator = [
-  query("itemId")
-    .isMongoId()
-    .withMessage("Invalid cart item id"),
+  query("itemId").isMongoId().withMessage("Invalid cart item id"),
 ];
 
 export const getCartValidator = [
@@ -79,4 +69,15 @@ export const getCartValidator = [
     .optional()
     .isIn(["english", "hindi"])
     .withMessage("Invalid language"),
+];
+
+export const addReviewValidator = [
+  body("productId").isMongoId().withMessage("Invalid product id"),
+  body("rating")
+    .isInt({ min: 1, max: 5 })
+    .withMessage("Rating must be between 1 and 5"),
+
+  body("comment")
+    .optional()
+    .trim()
 ];

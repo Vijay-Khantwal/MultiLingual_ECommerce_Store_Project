@@ -151,7 +151,9 @@
     "write": "Write a Review",
     "submit": "Submit Review",
     "placeholder": "Share your experience...",
-    "reviews": "reviews"
+    "reviews": "reviews",
+    "submitError": "Purchase product to submit a review",
+    "submitted": "Review submitted successfully"
   },
   "common": {
     "name": "Product Name",

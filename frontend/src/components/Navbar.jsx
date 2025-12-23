@@ -9,6 +9,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -46,13 +47,24 @@ export default function Navbar() {
             alt="IndiKart Logo"
             className="h-10 w-full object-contain rounded-md"
           />
-          <span className="text-3xl tracking-tight">Indi<span className="text-[#c88339]">Kart</span></span>
+          <span className="text-3xl tracking-tight">
+            Indi<span className="text-[#c88339]">Kart</span>
+          </span>
         </Link>
 
-        {/* Right Section */}
-        <div className="flex items-center gap-6 text-[#3d3d3d]">
+        {/* Hamburger (Mobile) */}
+        <button
+          className="sm:hidden text-2xl"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          ☰
+        </button>
+
+        {/* Desktop Menu */}
+        <div className="hidden sm:flex items-center gap-6 text-[#3d3d3d]">
           <LanguageSelect />
-          <Link to="/marketplace" className="hover:text-[#c9945c] transition">
+
+          <Link to="/marketplace" className="hover:text-[#c9945c]">
             {t("navbar.shop")}
           </Link>
 
@@ -77,48 +89,31 @@ export default function Navbar() {
                 </Link>
               )}
 
-              {/* Cart */}
               <Link to="/cart" className="relative hover:text-[#c9945c]">
                 <CartIcon />
               </Link>
 
-              {/* Profile Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setOpen(!open)}
-                  className="w-9 h-9 rounded-full bg-[#c9b5a0] flex items-center justify-center text-[#2d2d2d] font-semibold"
+                  className="w-9 h-9 rounded-full bg-[#c9b5a0] flex items-center justify-center font-semibold"
                 >
                   {user.name?.[0]?.toUpperCase() || "U"}
                 </button>
 
                 {open && (
-                  <div className="absolute right-0 mt-3 w-48 bg-white border border-[#d4cfc7] rounded-xl shadow-lg overflow-hidden">
-                    <div className="px-4 py-3 border-b text-sm text-[#4a4a4a]">
+                  <div className="absolute right-0 mt-3 w-48 bg-white border rounded-xl shadow-lg">
+                    <div className="px-4 py-3 border-b text-sm">
                       {user.name}
                     </div>
 
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
-                    >
+                    <Link to="/profile" className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]">
                       {t("navbar.profile")}
                     </Link>
 
-                    <Link
-                      to="/orders"
-                      className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
-                    >
+                    <Link to="/orders" className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]">
                       {t("navbar.orders")}
                     </Link>
-
-                    {user.role === "SELLER" && (
-                      <Link
-                        to="/seller"
-                        className="block px-4 py-2 text-sm hover:bg-[#e8dfd7]"
-                      >
-                        {t("navbar.dashboard")}
-                      </Link>
-                    )}
 
                     <button
                       onClick={logout}
@@ -133,6 +128,32 @@ export default function Navbar() {
           )}
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileOpen && (
+        <div className="sm:hidden px-6 pb-4 flex flex-col gap-4 text-[#3d3d3d]">
+          <LanguageSelect />
+
+          <Link to="/marketplace">{t("navbar.shop")}</Link>
+
+          {!user ? (
+            <>
+              <Link to="/login">{t("navbar.login")}</Link>
+              <Link to="/register">{t("navbar.signUp")}</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/cart">Cart</Link>
+              <Link to="/profile">{t("navbar.profile")}</Link>
+              <Link to="/orders">{t("navbar.orders")}</Link>
+              {user.role === "SELLER" && <Link to="/seller">{t("navbar.dashboard")}</Link>}
+              <button onClick={logout} className="text-left text-[#8b3a3a]">
+                {t("navbar.logout")}
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
