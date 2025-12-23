@@ -110,6 +110,8 @@ export const getProductById = async (req, res) => {
     images: product.images,
     name: t?.name || product.defaultName,
     description: t?.description || product.defaultDes,
+    averageRating: product.averageRating,
+    reviewCount: product.reviewCount,
   });
 };
 

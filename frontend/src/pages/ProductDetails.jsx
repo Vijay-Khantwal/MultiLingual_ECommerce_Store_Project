@@ -35,9 +35,9 @@ export default function ProductDetails() {
 
   if (!product) return null;
 
-  const avgRating = reviews.length
-    ? (reviews.reduce((a, r) => a + r.rating, 0) / reviews.length).toFixed(1)
-    : "0.0";
+  const avgRating = product.averageRating?.toFixed(1);
+  const reviewCount = product.reviewCount;
+
 
   const submitReview = async () => {
     try {
@@ -126,7 +126,7 @@ export default function ProductDetails() {
               ))}
             </div>
             <span className="text-sm text-[#6b6b6b]">
-              {avgRating} ({reviews.length} {t("reviews.reviews")})
+              {avgRating} ({reviewCount} {t("reviews.reviews")})
             </span>
           </div>
 

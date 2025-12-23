@@ -1,5 +1,6 @@
 import Review from "../models/Review.js";
 import Order from "../models/Order.js";
+import Product from "../models/Product.js";
 export const addReview = async (req, res) => {
   try {
     const { productId, rating, comment } = req.body;
@@ -17,14 +18,31 @@ export const addReview = async (req, res) => {
         .json({ message: "You must purchase this product to review it" });
     }
 
-    const existingReview = await Review.findOne({
-      userId,
-      productId,
-    });
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const existingReview = await Review.findOne({ userId, productId });
+
+    let totalRating = product.averageRating * product.reviewCount;
+    let reviewCount = product.reviewCount;
 
     if (existingReview) {
+      totalRating -= existingReview.rating;
       await Review.deleteOne({ _id: existingReview._id });
+    } else {
+      reviewCount += 1;
     }
+
+    totalRating += rating;
+
+    const newAverage = reviewCount === 0 ? 0 : totalRating / reviewCount;
+
+    product.averageRating = Number(newAverage.toFixed(1));
+    product.reviewCount = reviewCount;
+    await product.save();
+
     const review = await Review.create({
       productId,
       rating,
