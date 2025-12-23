@@ -312,20 +312,6 @@ GEMINI_API_KEY=your_gemini_api_key_here
 # Add any additional third-party service keys here
 ```
 
-#### Example Configuration for Local Development:
-
-```dotenv
-DATABASE_URL=mongodb://127.0.0.1:27017/EComm
-JWT_SECRET=ce3a367e4fbfc2786694bdfcacc9cceeb9b0d0d8452d90c34c114f2c140f404b
-GEMINI_API_KEY=AIzaSyDwZcGcB0YDWoI6Ycc6jBqz9zGKjC-DtXA
-RAZORPAY_KEY_ID=rzp_test_7VJfupYg7pdNlZ
-RAZORPAY_KEY_SECRET=blgzFriD8idGfNPwo9sHnzOZ
-PORT=5000
-FRONTEND_URL=http://localhost:5173
-NODE_ENV=development
-JWT_EXPIRATION=7d
-```
-
 #### Production Configuration (`backend/.env.production`):
 
 Create a separate `.env.production` file for production deployments:
@@ -397,14 +383,6 @@ VITE_RAZORPAY_KEY_ID=rzp_test_7VJfupYg7pdNlZ
 # VITE CONFIGURATION
 # ========================================
 # Mode (development/production)
-VITE_MODE=development
-```
-
-#### Example Configuration for Local Development:
-
-```dotenv
-VITE_API_URL=http://localhost:5000
-VITE_RAZORPAY_KEY_ID=rzp_test_7VJfupYg7pdNlZ
 VITE_MODE=development
 ```
 
